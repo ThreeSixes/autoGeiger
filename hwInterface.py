@@ -7,6 +7,9 @@ except:
 if config.bmp280Settings['enabled']:
     from pybmp280 import bmp280
 
+if config.shd31dSettings['enabled']:
+	from pysht31d import sht31d
+
 import threading
 import time
 import datetime
@@ -43,7 +46,16 @@ class hwInterface:
             
             # Set sensor mode.
             self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
+        
+        # If we want to use the SHT31D sensor...
+        if config.shd31dSettings['enabled']:
+            self.__sht31d = sht31d(
+                i2cBusID = config.sht31dSettings['busID'],
+                sensAddr = config.sht31dSettings['addr'])
             
+            # Set continuous high repeatablility 4 hz mode.
+            self.__sht31d.sendCmd16(self.__sht31d.cmdCntHiRep4Hz, wait = True)
+        
         # Build associative array of pins.
         self.__pins = {
             # Pins connected to the 32 bit coutner IC
@@ -184,6 +196,10 @@ class hwInterface:
                     # Read from it.
                     self.__bmp280.readSensor()
                 
+                # If we're using the SHT31-D...
+                if config.shd31dSettings['enabled']:
+                    self.__sht31d.readSensor()
+    
                 # Park the thread for a second.
                 time.sleep(1)
         
@@ -304,7 +320,7 @@ class hwInterface:
         Get all readings from the humidity sensor.
         """
         
-        return {'humidRH': None, 'humidTemp': None}
+        return {'humidRH': self.__sht31d.humidity, 'humidTemp': self.__sht31d.temperature}
     
     def shutdown(self):
         """

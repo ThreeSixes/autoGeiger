@@ -83,7 +83,6 @@ class autoGeiger:
         print("Fast full     : %s" %self.__samples[0]['fastFull'])
         print("Slow full     : %s" %self.__samples[0]['slowFull'])
         print("Timestamp     : %s" %self.__samples[0]['dts'])
-        print("Now           : %s" %datetime.datetime.utcnow())
         print("--")
         #pprint(self.__samples[0])
         
