@@ -72,17 +72,18 @@ class autoGeiger:
         """
         
         # Dump count data, alarm status, and start/end timestamps.
-        print("CPS         : %s" %self.__samples[0]['cps'])
-        print("CPM fast    : %s" %self.__samples[0]['fastCpm'])
-        print("CPM slow    : %s" %self.__samples[0]['slowCpm'])
-        print("GC Alarm    : %s" %self.__samples[0]['alarm'])
-        print("Temperature : %s" %self.__samples[0]['temp'])
-        print("Humidity    : %s" %self.__samples[0]['humid'])
-        print("Barometer   : %s" %self.__samples[0]['baro'])
-        print("Fast full   : %s" %self.__samples[0]['fastFull'])
-        print("Slow full   : %s" %self.__samples[0]['slowFull'])
-        print("Timestamp   : %s" %self.__samples[0]['dts'])
-        print("Now         : %s" %datetime.datetime.utcnow())
+        print("CPS           : %s" %self.__samples[0]['cps'])
+        print("CPM fast      : %s" %self.__samples[0]['fastCpm'])
+        print("CPM slow      : %s" %self.__samples[0]['slowCpm'])
+        print("GC Alarm      : %s" %self.__samples[0]['alarm'])
+        print("Temp (baro)   : %s" %self.__samples[0]['baroTemp'])
+        print("Press (baro)  : %s" %self.__samples[0]['baroPres'])
+        print("Temp (humid)  : %s" %self.__samples[0]['humidTemp'])
+        print("%RH (humid)   : %s" %self.__samples[0]['humidRH'])
+        print("Fast full     : %s" %self.__samples[0]['fastFull'])
+        print("Slow full     : %s" %self.__samples[0]['slowFull'])
+        print("Timestamp     : %s" %self.__samples[0]['dts'])
+        print("Now           : %s" %datetime.datetime.utcnow())
         print("--")
         #pprint(self.__samples[0])
         
@@ -121,9 +122,10 @@ class autoGeiger:
                     'slowFull': None,
                     'alarm': None,
                     'time': None,
-                    'temp': None,
-                    'humid': None,
-                    'baro': None
+                    'humidRH': None,
+                    'humidTemp': None,
+                    'baroTemp': None,
+                    'baroPres': None
                 }
                 
                 try:
@@ -150,8 +152,9 @@ class autoGeiger:
                 
                 # Get humidity data.
                 try:
-                    # Temp and humidity readings to the data stream.
-                    thisSample.update(self.__hwI.getHumidReadings())
+                    if config.shd31dSettingsp['enabled']:
+                        # Temp and humidity readings to the data stream.
+                        thisSample.update(self.__hwI.getHumidReadings())
                 
                 except:
                     None

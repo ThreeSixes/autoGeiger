@@ -12,6 +12,24 @@ shd31dSettings = {
     'addr': 0x45 # I2C address of sensor.
 }
 
+# MongoDB settings
+mongoSettings = {
+    'enabled': True, # Do we want to store things in MongoDB?
+    'host': '127.0.0.1', # Host/IP address of the MongoDB server.
+    'port': 27017, # Port number.
+    'user': None, # MongoDB username.
+    'pass': None, # MongoDB password.
+    'dbName': 'autoGeiger', # Database name.
+    'collName': 'samples' # Colleciton name.
+}
+
+# Web server settings
+webSvcSettings = {
+    'enabled': True, # Activate the web server?
+    'listenAddr': '0.0.0.0', # Which IP do we listen on?
+    'listenPort': 8080 # Which port do we listen on?
+}
+
 # notifyPyClient settings.
 nfySettings = {
     'enabled': False, # Do we want to use the notify client at all?

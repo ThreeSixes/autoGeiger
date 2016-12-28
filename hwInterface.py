@@ -3,18 +3,21 @@ try:
 except:
 	print("Failed to open config.py. Please copy config.py.example to config.py and edit it.")
 
+# See if we want to use the BMP280...
+if config.bmp280Settings['enabled']:
+    from pybmp280 import bmp280
+
 import threading
 import time
 import datetime
-from pybmp280 import bmp280
 
 class hwInterface:
     def __init__(self, gpio):
         """
         Handle GPIO and I2C hardware interface.
         - Get counts per second and alarm signals from a Ludlum 177 via a TI SN74LV8154 counter IC.
-        - Read temperature and humidity from a Sensiron SHT31-D.
         - Read barometric pressure and temperature from a Bosch BMP280.
+        - Read temperature and humidity from a Sensiron SHT31-D.
         - Handle power button LED.
         """
         
@@ -168,6 +171,25 @@ class hwInterface:
         except:
             self.shutdown()
     
+    def __sensorThread(self):
+        """
+        This continually reads data from the sensors.
+        """
+        try:
+            # Poll the sensor once per second.
+            while self.__keepRunning:
+                
+                # If we're using the BMP280...
+                if config.bmp280Settings['enabled']:
+                    # Read from it.
+                    self.__bmp280.readSensor()
+                
+                # Park the thread for a second.
+                time.sleep(1)
+        
+        except:
+            raise
+    
     def setPowerLed(self, state = True):
         """
         Turn the status LED on or off. Given a boolean value.
@@ -270,40 +292,19 @@ class hwInterface:
         
         return retVal
     
-    def __sensorThread(self):
-        """
-        This continually reads data from the sensors.
-        """
-        try:
-            # Poll the sensor once per second.
-            while self.__keepRunning:
-                
-                # If we're using the BMP280...
-                if config.bmp280Settings['enabled']:
-                    # Read from it.
-                    self.__bmp280.readSensor()
-                
-                # Park the thread for a second.
-                time.sleep(1)
-        
-        except:
-            raise
-    
     def getBaroReadings(self):
         """
         Get all readings from the barometer.
         """
         
-        return {'baro': self.__bmp280.pressure, 'temp': self.__bmp280.temperature}
+        return {'baroPres': self.__bmp280.pressure, 'baroTemp': self.__bmp280.temperature}
     
     def getHumidReadings(self):
         """
         Get all readings from the humidity sensor.
         """
         
-        retVal = {'humid': None, 'temp': None}
-        
-        return retVal
+        return {'humidRH': None, 'humidTemp': None}
     
     def shutdown(self):
         """
@@ -311,14 +312,17 @@ class hwInterface:
         """
         
         # Flag all threads to shut down.
+        print("Send hardware threads the kill signal...")
         self.__keepRunning = False
         
         try:
+            print("Clean up RPi GPIO...")
             self.__gpio.cleanup()
         except:
             None
         
         try:
+            print("Wait for sensors thread to exit...")
             self.__sensorsThread.join()
         except:
             None
