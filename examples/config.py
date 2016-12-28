@@ -6,7 +6,7 @@ bmp280Settings = {
 }
 
 # Sensiron SHT31-D
-shd31dSettings = {
+sht31dSettings = {
     'enabled': True, # Do we want to use this sensor?
     'busID': 1, # I2C bus ID.
     'addr': 0x45 # I2C address of sensor.
