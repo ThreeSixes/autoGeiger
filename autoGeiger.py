@@ -7,7 +7,7 @@ import time
 import datetime
 import RPi.GPIO as gpio
 from hwInterface import hwInterface
-from notifyPyClient import notifyjPyClient
+from notifyPyClient import notifyPyClient
 from pprint import pprint
 
 class autoGeiger:
