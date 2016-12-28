@@ -197,7 +197,7 @@ class hwInterface:
                     self.__bmp280.readSensor()
                 
                 # If we're using the SHT31-D...
-                if config.shd31dSettings['enabled']:
+                if config.sht31dSettings['enabled']:
                     self.__sht31d.readSensor()
     
                 # Park the thread for a second.
