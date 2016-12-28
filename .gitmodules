@@ -1,0 +1,3 @@
+[submodule "pybmp280"]
+	path = pybmp280
+	url = https://github.com/ThreeSixes/pybmp280.git
