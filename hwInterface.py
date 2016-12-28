@@ -7,7 +7,7 @@ except:
 if config.bmp280Settings['enabled']:
     from pybmp280 import bmp280
 
-if config.shd31dSettings['enabled']:
+if config.sht31dSettings['enabled']:
 	from pysht31d import sht31d
 
 import threading
@@ -48,7 +48,7 @@ class hwInterface:
             self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
         
         # If we want to use the SHT31D sensor...
-        if config.shd31dSettings['enabled']:
+        if config.sht31dSettings['enabled']:
             self.__sht31d = sht31d(
                 i2cBusID = config.sht31dSettings['busID'],
                 sensAddr = config.sht31dSettings['addr'])
