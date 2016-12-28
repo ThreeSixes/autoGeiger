@@ -23,10 +23,10 @@ class hwInterface:
         self.__bmp280.resetSensor()
 
         # Our configuration byte contains standby time, filter, and SPI enable.
-        bmp280Config = sensW.tSb62t5 | sensW.filt4
+        bmp280Config = self.__bmp280.tSb62t5 | self.__bmp280.filt4
 
         # Our measurement byte contains temperature + pressure oversampling and mode.
-        bmp280Meas = sensW.osP16 | sensW.osT2 | sensW.modeNormal
+        bmp280Meas = self.__bmp280.osP16 | self.__bmp280.osT2 | self.__bmp280.modeNormal
     
         # Set sensor mode.
         self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
