@@ -278,9 +278,7 @@ class hwInterface:
         Get all readings from the barometer.
         """
         
-        retVal = {'baro': self.__bmp280.pressure, 'temp': self.__bmp280.temperature}
-        
-        return retVal
+        return {'baro': self.__bmp280.pressure, 'temp': self.__bmp280.temperature}
     
     def getHumidReadings(self):
         """
