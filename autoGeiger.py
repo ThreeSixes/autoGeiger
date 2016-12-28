@@ -79,7 +79,7 @@ class autoGeiger:
         print("Temp (baro)   : %s" %self.__samples[0]['baroTemp'])
         print("Press (baro)  : %s" %self.__samples[0]['baroPres'])
         print("Temp (humid)  : %s" %self.__samples[0]['humidTemp'])
-        print("%RH (humid)   : %s" %self.__samples[0]['humidRH'])
+        print("\%RH (humid)   : %s" %self.__samples[0]['humidRH'])
         print("Fast full     : %s" %self.__samples[0]['fastFull'])
         print("Slow full     : %s" %self.__samples[0]['slowFull'])
         print("Timestamp     : %s" %self.__samples[0]['dts'])
