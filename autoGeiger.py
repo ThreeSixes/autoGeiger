@@ -5,8 +5,10 @@ except:
 
 import time
 import datetime
+import json
 import RPi.GPIO as gpio
 from hwInterface import hwInterface
+from dataLayer import dataLayer
 from notifyPyClient import notifyPyClient
 from pprint import pprint
 
@@ -79,7 +81,7 @@ class autoGeiger:
         print("Temp (baro)   : %s" %self.__samples[0]['baroTemp'])
         print("Press (baro)  : %s" %self.__samples[0]['baroPres'])
         print("Temp (humid)  : %s" %self.__samples[0]['humidTemp'])
-        print("RH  (humid)   : %s" %self.__samples[0]['humidRH'])
+        print("RH (humid)    : %s" %self.__samples[0]['humidRH'])
         print("Fast full     : %s" %self.__samples[0]['fastFull'])
         print("Slow full     : %s" %self.__samples[0]['slowFull'])
         print("Timestamp     : %s" %self.__samples[0]['dts'])
@@ -109,8 +111,12 @@ class autoGeiger:
         try:
             # While we're still taking readings...
             while self.__keepReading:
-                # Wait 1 sec.
-                time.sleep(1)
+                try:
+                    # Wait 1 sec.
+                    time.sleep(1)
+                
+                except:
+                    raise
                 
                 # Build a template for this sample.
                 thisSample = {
@@ -208,6 +214,9 @@ class autoGeiger:
 try:
     ag = autoGeiger()
     ag.readCont()
+
+except (KeyboardInterrupt, SystemExit):
+	print("Quitting for real.")
 
 except:
     raise
