@@ -1,3 +1,6 @@
 [submodule "notifyPyClient"]
 	path = notifyPyClient
 	url = https://github.com/ThreeSixes/notifyPyClient.git
+[submodule "pysht31d"]
+	path = pysht31d
+	url = https://github.com/ThreeSixes/pysht31d.git
