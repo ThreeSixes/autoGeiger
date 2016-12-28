@@ -1,0 +1,3 @@
+[submodule "notifyPyClient"]
+	path = notifyPyClient
+	url = https://github.com/ThreeSixes/notifyPyClient.git
