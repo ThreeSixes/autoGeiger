@@ -155,11 +155,11 @@ class autoGeiger:
                 
                 except:
                     None
-				
-				# Get barometric data.
-				try:
-					# Temp and baro readings.
-					thisSample.update(self.__hwI.getBaroReadings())
+                
+                # Get barometric data.
+                try:
+                    # Temp and baro readings.
+                    thisSample.update(self.__hwI.getBaroReadings())
                 
                 except:
                     None
