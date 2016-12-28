@@ -26,6 +26,9 @@ class autoGeiger:
             # Set up our hardware interface.
             self.__hwI = hwInterface(self.__gpio)
             
+            # Set up our data layer.
+            self.__dl = dataLayer()
+            
             # Is the notification subsystem enabled?
             self.__nfyE = config.nfySettings['enabled']
             
@@ -61,10 +64,9 @@ class autoGeiger:
         Handle one minute worth of samples.
         """
         
-        # Put samples in the datalayer(s)
-        print("!!!!!!!!!")
-        print("1 minute sample count: %s" %len(self.__samples))
-        print("!!!!!!!!!")
+        # Store the sample buffer!
+        self.__dl.serialize(self.__samples)
+        
         
         return
     
@@ -74,7 +76,7 @@ class autoGeiger:
         """
         
         # Dump count data, alarm status, and start/end timestamps.
-        print("CPS           : %s" %self.__samples[0]['cps'])
+        """print("CPS           : %s" %self.__samples[0]['cps'])
         print("CPM fast      : %s" %self.__samples[0]['fastCpm'])
         print("CPM slow      : %s" %self.__samples[0]['slowCpm'])
         print("GC Alarm      : %s" %self.__samples[0]['alarm'])
@@ -87,7 +89,7 @@ class autoGeiger:
         print("Timestamp     : %s" %self.__samples[0]['dts'])
         print("--")
         #pprint(self.__samples[0])
-        
+        """
         return
     
     def readContStop(self):
@@ -208,6 +210,12 @@ class autoGeiger:
             try:
                 # Signal the counter hardware to clean up.
                 self.__hwI.shutdown()
+            except:
+                None
+            
+            try:
+                # Store the records we have.
+                self.__dl.serialize(self.__samples)
             except:
                 None
 

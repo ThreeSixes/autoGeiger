@@ -17,8 +17,6 @@ mongoSettings = {
     'enabled': True, # Do we want to store things in MongoDB?
     'host': '127.0.0.1', # Host/IP address of the MongoDB server.
     'port': 27017, # Port number.
-    'user': None, # MongoDB username.
-    'pass': None, # MongoDB password.
     'dbName': 'autoGeiger', # Database name.
     'collName': 'samples' # Colleciton name.
 }
