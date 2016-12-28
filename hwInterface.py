@@ -17,7 +17,7 @@ class hwInterface:
         self.__gpio = gpio
         
         # Get Bosch BMP280 object.
-        self.__bmp280 = bmp280.bmp280
+        self.__bmp280 = bmp280()
         
         # Restart sensor.
         self.__bmp280.resetSensor()
