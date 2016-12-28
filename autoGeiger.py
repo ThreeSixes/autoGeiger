@@ -128,7 +128,6 @@ class autoGeiger:
                     'fastFull': None,
                     'slowFull': None,
                     'alarm': None,
-                    'time': None,
                     'humidRH': None,
                     'humidTemp': None,
                     'baroTemp': None,
