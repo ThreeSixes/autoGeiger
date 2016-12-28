@@ -159,7 +159,7 @@ class autoGeiger:
                 # Get barometric data.
                 try:
                     # Pull the readings.
-                    baroData = self.__hwI.getHumidReadings()
+                    baroData = self.__hwI.getBaroReadings()
                     
                     # Since the barometer we're using has more accurate temperature
                     # data than the hygrometer if we get temp data from it we'll use it instead.
