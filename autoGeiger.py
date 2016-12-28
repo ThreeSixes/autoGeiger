@@ -151,7 +151,7 @@ class autoGeiger:
                 
                 # Get humidity data.
                 try:
-                    if config.shd31dSettingsp['enabled']:
+                    if config.sht31dSettings['enabled']:
                         # Temp and humidity readings to the data stream.
                         thisSample.update(self.__hwI.getHumidReadings())
                 
