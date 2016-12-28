@@ -1,3 +1,4 @@
+import threading
 import time
 import datetime
 from pybmp280 import bmp280
@@ -14,6 +15,21 @@ class hwInterface:
         
         # Get GPIO object.
         self.__gpio = gpio
+        
+        # Get Bosch BMP280 object.
+        self.__bmp280 = bmp280.bmp280()
+        
+        # Restart sensor.
+        self.__bmp280.resetSensor()
+
+        # Our configuration byte contains standby time, filter, and SPI enable.
+        bmp280Config = sensW.tSb62t5 | sensW.filt4
+
+        # Our measurement byte contains temperature + pressure oversampling and mode.
+        bmp280Meas = sensW.osP16 | sensW.osT2 | sensW.modeNormal
+    
+        # Set sensor mode.
+        self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
         
         # Build associative array of pins.
         self.__pins = {
@@ -104,6 +120,9 @@ class hwInterface:
             }
         }
         
+        # Do we want to keep running?
+        self.__keepRunning = True
+        
         # Timestamps and related.
         self.tsFormat = '%Y-%m-%d %H:%M:%S.%f UTC'
         self.__tsReading = datetime.datetime.utcnow()
@@ -122,13 +141,22 @@ class hwInterface:
                     self.__gpio.output(self.__pins[pin]['pin'], self.__pins[pin]['default'])
             
         except:
-            # Try to clean up the GPIO ports.
+            # Clean up and shut down.
             try:
-                self.__gpio.cleanup()
+                self.shutdown()
+            
             except:
                 None
             
             raise
+        
+        try:
+            # Start our sensor polling thread.
+            self.__sensorsThread = threading.Thread(target=self.__sensorThread)
+            self.__sensorsThread.start()
+        
+        except:
+            self.shutdown()
     
     def setPowerLed(self, state = True):
         """
@@ -232,12 +260,25 @@ class hwInterface:
         
         return retVal
     
+    def __sensorThread(self):
+        """
+        This continually reads data from the sensors.
+        """
+        try:
+            # Poll the sensor once per second.
+            while self.__keepRunning:
+                self.__bmp280.readSensor()
+                time.sleep(1)
+        
+        except:
+            raise
+    
     def getBaroReadings(self):
         """
         Get all readings from the barometer.
         """
         
-        retVal = {'baro': None, 'temp': None}
+        retVal = {'baro': self.__bmp280.pressure, 'temp': self.__bmp280.temperature}
         
         return retVal
     
@@ -255,7 +296,15 @@ class hwInterface:
         Cleanly shut down.
         """
         
+        # Flag all threads to shut down.
+        self.__keepRunning = False
+        
         try:
             self.__gpio.cleanup()
+        except:
+            None
+        
+        try:
+            self.__sensorsThread.join()
         except:
             None
