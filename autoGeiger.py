@@ -158,8 +158,9 @@ class autoGeiger:
                 
                 # Get barometric data.
                 try:
-                    # Temp and baro readings.
-                    thisSample.update(self.__hwI.getBaroReadings())
+                    if config.bmp280Settings['enabled']:
+                        # Temp and baro readings.
+                        thisSample.update(self.__hwI.getBaroReadings())
                 
                 except:
                     None

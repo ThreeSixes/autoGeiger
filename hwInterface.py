@@ -1,3 +1,8 @@
+try:
+	import config
+except:
+	print("Failed to open config.py. Please copy config.py.example to config.py and edit it.")
+
 import threading
 import time
 import datetime
@@ -16,21 +21,26 @@ class hwInterface:
         # Get GPIO object.
         self.__gpio = gpio
         
-        # Get Bosch BMP280 object.
-        self.__bmp280 = bmp280()
+        # If we want to sue the BMP280 sensor...
+        if config.bmp280Settings['enabled']:
         
-        # Restart sensor.
-        self.__bmp280.resetSensor()
-
-        # Our configuration byte contains standby time, filter, and SPI enable.
-        bmp280Config = self.__bmp280.tSb62t5 | self.__bmp280.filt4
-
-        # Our measurement byte contains temperature + pressure oversampling and mode.
-        bmp280Meas = self.__bmp280.osP16 | self.__bmp280.osT2 | self.__bmp280.modeNormal
-    
-        # Set sensor mode.
-        self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
-        
+            # Get Bosch BMP280 object.
+            self.__bmp280 = bmp280(
+                i2cBusID = config.bmp280Settings['busID'],
+                sensAddr = config.bmp280Settings['addr'])
+            
+            # Restart sensor.
+            self.__bmp280.resetSensor()
+            
+            # Our configuration byte contains standby time, filter, and SPI enable.
+            bmp280Config = self.__bmp280.tSb62t5 | self.__bmp280.filt4
+            
+            # Our measurement byte contains temperature + pressure oversampling and mode.
+            bmp280Meas = self.__bmp280.osP16 | self.__bmp280.osT2 | self.__bmp280.modeNormal
+            
+            # Set sensor mode.
+            self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
+            
         # Build associative array of pins.
         self.__pins = {
             # Pins connected to the 32 bit coutner IC
@@ -267,7 +277,13 @@ class hwInterface:
         try:
             # Poll the sensor once per second.
             while self.__keepRunning:
-                self.__bmp280.readSensor()
+                
+                # If we're using the BMP280...
+                if config.bmp280Settings['enabled']:
+                    # Read from it.
+                    self.__bmp280.readSensor()
+                
+                # Park the thread for a second.
                 time.sleep(1)
         
         except:
