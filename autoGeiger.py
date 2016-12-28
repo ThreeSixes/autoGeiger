@@ -155,20 +155,11 @@ class autoGeiger:
                 
                 except:
                     None
-                
-                # Get barometric data.
-                try:
-                    # Pull the readings.
-                    baroData = self.__hwI.getBaroReadings()
-                    
-                    # Since the barometer we're using has more accurate temperature
-                    # data than the hygrometer if we get temp data from it we'll use it instead.
-                    if baroData['temp'] == None:
-                        # Just yank it since we have nothing.
-                        baroData.pop('temp')
-                    
-                    # Update with the things we want.
-                    thisSample.update(baroData)
+				
+				# Get barometric data.
+				try:
+					# Temp and baro readings.
+					thisSample.update(self.__hwI.getBaroReadings())
                 
                 except:
                     None
