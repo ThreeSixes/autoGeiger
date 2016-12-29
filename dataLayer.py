@@ -26,10 +26,26 @@ class dataLayer:
         # IF we want to use Redis...
         if config.redisSettings['enabled']:
             try:
-                self.__rQ = None ### FIX ME GODDAMNIT!
+                # Build Redis object
+                self.__r = redis.StrictRedis(config.redisSettings['host'], config.redisSettings['port'])
             
             except:
                 raise
+    
+    def hashUp(self, records):
+        """
+        Add bulk records to the hash table.
+        """
+        
+        # IF we want to use Redis...
+        if config.redisSettings['enabled']:
+            try:
+                # Build Redis object
+                self.__r.hmset(config.redisSettings['htLastName'], records)
+            
+            except:
+                raise
+        
     
     def queueUp(self, record):
         """
