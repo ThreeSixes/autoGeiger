@@ -206,7 +206,6 @@ class hwInterface:
                 time.sleep(1)
         
         except:
-            print(traceback.format_exc())
             raise
     
     def setPowerLed(self, state = True):

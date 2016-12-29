@@ -6,6 +6,7 @@ except:
 import time
 import datetime
 import RPi.GPIO as gpio
+import traceback
 from hwInterface import hwInterface
 from dataLayer import dataLayer
 from notifyPyClient import notifyPyClient
@@ -149,7 +150,8 @@ class autoGeiger:
                     thisSample['dts'] = self.__hwI.getReadingTs()
                 
                 except:
-                    raise                
+                    print(traceback.format_exc())
+                    raise 
                 
                 # Prepend the incoming sample, and trim the array to the largest amount we need.
                 self.__avgBuff[:0] = [thisSample['cps']]
@@ -171,6 +173,7 @@ class autoGeiger:
                         thisSample.update(self.__hwI.getHumidReadings())
                 
                 except:
+                    print(traceback.format_exc())
                     None
                 
                 # Get barometric data.
@@ -180,6 +183,7 @@ class autoGeiger:
                         thisSample.update(self.__hwI.getBaroReadings())
                 
                 except:
+                    print(traceback.format_exc())
                     None
                 
                 # Prepend sample data. This could be appending.
@@ -203,18 +207,19 @@ class autoGeiger:
                     self.__samples = []
         
         except:
+            print(traceback.format_exc())
             raise
         
         finally:
             try:
-                # Signal the counter hardware to clean up.
-                self.__hwI.shutdown()
+                # Store the records we have.
+                self.__dl.serialize(self.__samples)
             except:
                 None
             
             try:
-                # Store the records we have.
-                self.__dl.serialize(self.__samples)
+                # Signal the counter hardware to clean up.
+                self.__hwI.shutdown()
             except:
                 None
 
@@ -226,5 +231,6 @@ except (KeyboardInterrupt, SystemExit):
 	print("Quitting for real.")
 
 except:
-    raise
+	print(traceback.format_exc())
+	raise
 
