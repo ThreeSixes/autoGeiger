@@ -21,11 +21,14 @@ mongoSettings = {
     'collName': 'samples' # Colleciton name.
 }
 
-# Web server settings
-webSvcSettings = {
-    'enabled': True, # Activate the web server?
-    'listenAddr': '0.0.0.0', # Which IP do we listen on?
-    'listenPort': 8080 # Which port do we listen on?
+# Redis queue settings.
+redisSettings = {
+    'enabled': True, # Do we want to store things in MongoDB?
+    'host': '127.0.0.1', # Host/IP address of the MongoDB server.
+    'port': 27017, # Port number.
+    'psQName': 'autoGeiger', # Name of the pub/sub queue we want to drop our data on....
+    'htLastExpire': 2, # Number of seconds the hash table for the last data point expires.
+    'htLastName': 'autoGeigerLast' # Name of the entry holding our last entries.
 }
 
 # notifyPyClient settings.

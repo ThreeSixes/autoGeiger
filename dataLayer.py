@@ -3,7 +3,9 @@ try:
 except:
 	print("Failed to open config.py. Please copy config.py.example to config.py and edit it.")
 
-import pymongo
+if config.mongoSettings['enabled']: import pymongo
+if config.redisSettings['enabled']: import redis
+import json
 
 class dataLayer:
     def __init__(self):
@@ -11,12 +13,32 @@ class dataLayer:
         autoGeiger data layer.
         """
         
-        try:
-            smplMongo = pymongo.MongoClient(config.mongoSettings['host'], config.mongoSettings['port'])
-            mDB = smplMongo[config.mongoSettings['dbName']]
-            self.__sColl = mDB[config.mongoSettings['collName']]
-        except:
-            raise
+        # IF we want to use mMngoDB...
+        if config.mongoSettings['enabled']:
+            try:
+                smplMongo = pymongo.MongoClient(config.mongoSettings['host'], config.mongoSettings['port'])
+                mDB = smplMongo[config.mongoSettings['dbName']]
+                self.__sColl = mDB[config.mongoSettings['collName']]
+            
+            except:
+                raise
+        
+        # IF we want to use Redis...
+        if config.redisSettings['enabled']:
+            try:
+                self.__rQ = None ### FIX ME GODDAMNIT!
+            
+            except:
+                raise
+    
+    def queueUp(self, record):
+        """
+        Drop incoming data into queues.
+        """
+        
+        # If we want to use Redis...	
+        if config.redisSettings['enabled']:
+            None
     
     def serialize(self, records):
         """
@@ -24,7 +46,9 @@ class dataLayer:
         """
         
         try:
-            self.__sColl.insert(records)
+            # IF we want to use mongoDB...
+            if config.redisSettings['enabled']:
+                self.__sColl.insert(records)
         
         except:
             raise

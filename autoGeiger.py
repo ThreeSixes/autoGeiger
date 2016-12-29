@@ -5,7 +5,6 @@ except:
 
 import time
 import datetime
-import json
 import RPi.GPIO as gpio
 from hwInterface import hwInterface
 from dataLayer import dataLayer
