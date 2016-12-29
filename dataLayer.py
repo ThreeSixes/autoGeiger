@@ -41,8 +41,7 @@ class dataLayer:
         if config.redisSettings['enabled']:
             try:
                 # Build Redis object
-                self.__r.hmset(config.redisSettings['htLastName'], {'samples': records})
-                self.__r.expire(config.redisSettings['htLastName'], config.redisSettings['htLastExpire'])
+                self.__r.set(config.redisSettings['htLastName'], records, ex = config.redisSettings['htLastExpire'])
             
             except:
                 raise
