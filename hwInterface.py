@@ -150,7 +150,6 @@ class hwInterface:
         self.__keepRunning = True
         
         # Timestamps and related.
-        self.tsFormat = '%Y-%m-%d %H:%M:%S.%f UTC'
         self.__tsReading = datetime.datetime.utcnow()
         
         try:

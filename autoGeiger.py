@@ -79,7 +79,10 @@ class autoGeiger:
         """
         
         # Populate the last samples buffer and trim for 5 minutes.
-        self.__lastSamples.append([self.__samples[0]])
+        thisSpl = self.__samples[0]
+        thisSpl['dts'] = str(thisSpl['dts'])
+        
+        self.__lastSamples.append([thisSpl])
         self.__lastSamples = self.__lastSamples[:300]
         self.__dl.hashUp(self.__lastSamples)
         #self.__dl.queueUp(self.__lastSamples[0])
