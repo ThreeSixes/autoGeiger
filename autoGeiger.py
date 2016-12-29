@@ -81,7 +81,7 @@ class autoGeiger:
         self.__lastSamples.append([self.__samples[0]])
         self.__lastSamples = self.__lastSamples[:300]
         self.__dl.hashUp(self.__lastSamples)
-        self.__dl.queueUp(self.__lastSamples[0])
+        #self.__dl.queueUp(self.__lastSamples[0])
         
         # Dump count data, alarm status, and start/end timestamps.
         """print("CPS           : %s" %self.__samples[0]['cps'])
