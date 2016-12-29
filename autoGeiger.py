@@ -55,7 +55,7 @@ class autoGeiger:
         self.__samples = []
         
         # Hold our last samples.
-        self.__lastSamples = None
+        self.__lastSamples = []
         
         # Fast and slow sample averaging stuff.
         self.__avgBuff = []
