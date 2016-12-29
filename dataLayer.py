@@ -3,6 +3,7 @@ try:
 except:
 	print("Failed to open config.py. Please copy config.py.example to config.py and edit it.")
 
+import traceback
 from pprint import pprint
 
 if config.mongoSettings['enabled']: import pymongo
@@ -39,18 +40,14 @@ class dataLayer:
         Add bulk records to the hash table.
         """
         
-        pprint(records)
-        
         # IF we want to use Redis...
         if config.redisSettings['enabled']:
             try:
                 # Build Redis object
                 self.__r.set(config.redisSettings['htLastName'], json.dumps({'samples': records}), ex = config.redisSettings['htLastExpire'])
-                #self.__r.set(config.redisSettings['htLastName'], 'x', ex = config.redisSettings['htLastExpire'])
             
             except:
-                raise
-        
+                print(traceback.format_exc())
     
     def queueUp(self, record):
         """
