@@ -167,8 +167,6 @@ class hwInterface:
                     self.__gpio.output(self.__pins[pin]['pin'], self.__pins[pin]['default'])
             
         except:
-            tb = traceback.format_exc()
-            print(tb)
             # Clean up and shut down.
             try:
                 self.shutdown()
@@ -184,6 +182,8 @@ class hwInterface:
             self.__sensorsThread.start()
         
         except:
+            tb = traceback.format_exc()
+            print(tb)
             self.shutdown()
             raise
     
