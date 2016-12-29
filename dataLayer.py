@@ -3,6 +3,8 @@ try:
 except:
 	print("Failed to open config.py. Please copy config.py.example to config.py and edit it.")
 
+from pprint import pprint
+
 if config.mongoSettings['enabled']: import pymongo
 if config.redisSettings['enabled']: import redis
 import json
