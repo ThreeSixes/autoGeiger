@@ -35,20 +35,6 @@ class dataLayer:
             except:
                 raise
     
-    def hashUp(self, records):
-        """
-        Add bulk records to the hash table.
-        """
-        
-        # IF we want to use Redis...
-        if config.redisSettings['enabled']:
-            try:
-                # Build Redis object
-                self.__r.set(config.redisSettings['htLastName'], json.dumps(records), ex = config.redisSettings['htLastExpire'])
-            
-            except:
-                print(traceback.format_exc())
-    
     def queueUp(self, record):
         """
         Drop incoming data into queues.
@@ -56,7 +42,8 @@ class dataLayer:
         
         # If we want to use Redis...	
         if config.redisSettings['enabled']:
-            None
+            # Queue the record up.
+            self.__r.publish(config.redisSettings['qName'], record)
     
     def serialize(self, records):
         """
