@@ -182,8 +182,6 @@ class hwInterface:
             self.__sensorsThread.start()
         
         except:
-            tb = traceback.format_exc()
-            print(tb)
             self.shutdown()
             raise
     
@@ -203,11 +201,12 @@ class hwInterface:
                 # If we're using the SHT31-D...
                 if config.sht31dSettings['enabled']:
                     self.__sht31d.readSensor()
-    
+                
                 # Park the thread for a second.
                 time.sleep(1)
         
         except:
+            print(traceback.format_exc())
             raise
     
     def setPowerLed(self, state = True):
