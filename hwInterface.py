@@ -12,6 +12,7 @@ if config.sht31dSettings['enabled']:
 
 import threading
 import time
+import traceback
 import datetime
 
 class hwInterface:
@@ -166,6 +167,8 @@ class hwInterface:
                     self.__gpio.output(self.__pins[pin]['pin'], self.__pins[pin]['default'])
             
         except:
+            tb = traceback.format_exc()
+            print(tb)
             # Clean up and shut down.
             try:
                 self.shutdown()
@@ -182,6 +185,7 @@ class hwInterface:
         
         except:
             self.shutdown()
+            raise
     
     def __sensorThread(self):
         """
