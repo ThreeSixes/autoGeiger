@@ -27,7 +27,7 @@ class dataLayer:
         if config.redisSettings['enabled']:
             try:
                 # Build Redis object
-                self.__r = redis.StrictRedis(config.redisSettings['host'], config.redisSettings['port'])
+                self.__r = redis.StrictRedis(host = config.redisSettings['host'], port = config.redisSettings['port'])
             
             except:
                 raise
