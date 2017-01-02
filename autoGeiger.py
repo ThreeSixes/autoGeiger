@@ -80,7 +80,7 @@ class autoGeiger:
 		thisSpl['dts'] = str(thisSpl['dts'])
 		
 		# Tack the latest sample on and trim the buffer.
-		self.__sampleBuf[:0]  = [thisSpl]
+		self.__sampleBuf[:0] = [thisSpl]
 		self.__sampleBuf =  self.__sampleBuf[:config.autoGeiger['splBuffDepth']]
 		
 		# Queue up the latest sample.
@@ -90,7 +90,7 @@ class autoGeiger:
 		self.__dl.cacheUp(self.__sampleBuf)
 		
 		# Dump count data, alarm status, and start/end timestamps.
-		print("CPS		   : %s" %self.__samples[0]['cps'])
+		"""print("CPS		   : %s" %self.__samples[0]['cps'])
 		print("CPM fast	  : %s" %self.__samples[0]['fastCpm'])
 		print("CPM slow	  : %s" %self.__samples[0]['slowCpm'])
 		print("GC Alarm	  : %s" %self.__samples[0]['alarm'])
@@ -101,7 +101,7 @@ class autoGeiger:
 		print("Fast full	 : %s" %self.__samples[0]['fastFull'])
 		print("Slow full	 : %s" %self.__samples[0]['slowFull'])
 		print("Timestamp	 : %s" %self.__samples[0]['dts'])
-		print("--")
+		print("--")"""
 				
 		return
 	

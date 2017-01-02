@@ -46,7 +46,7 @@ class dataLayer:
 				self.__r.setex(
 					config.redisSettings['cacheName'],
 					json.dumps(
-						records[:config.redisSettings['cacheDepth']]
+						{'samples': records[:config.redisSettings['cacheDepth']] }
 					),
 					config.redisSettings['cacheExpire']
 				)
