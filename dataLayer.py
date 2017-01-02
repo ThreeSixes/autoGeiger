@@ -45,10 +45,10 @@ class dataLayer:
 			if config.redisSettings['enabled']:
 				self.__r.setex(
 					config.redisSettings['cacheName'],
-					record,
-					config.redisSettings['cacheExpire']
+					config.redisSettings['cacheExpire'],
+					record
 				)
-		
+	
 		except:
 			raise
 		
