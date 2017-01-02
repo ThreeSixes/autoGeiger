@@ -90,7 +90,7 @@ class autoGeiger:
 		self.__dl.cacheUp(self.__sampleBuf)
 		
 		# Dump count data, alarm status, and start/end timestamps.
-		"""print("CPS		   : %s" %self.__samples[0]['cps'])
+		print("CPS		   : %s" %self.__samples[0]['cps'])
 		print("CPM fast	  : %s" %self.__samples[0]['fastCpm'])
 		print("CPM slow	  : %s" %self.__samples[0]['slowCpm'])
 		print("GC Alarm	  : %s" %self.__samples[0]['alarm'])
@@ -102,8 +102,7 @@ class autoGeiger:
 		print("Slow full	 : %s" %self.__samples[0]['slowFull'])
 		print("Timestamp	 : %s" %self.__samples[0]['dts'])
 		print("--")
-		"""
-		
+				
 		return
 	
 	def readContStop(self):
