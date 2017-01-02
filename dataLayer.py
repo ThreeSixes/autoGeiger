@@ -35,14 +35,20 @@ class dataLayer:
 			except:
 				raise
 	
-	def cacheUo(self, records):
+	def cacheUp(self, records):
 		"""
 		Cache a number of records.
 		"""
 		
 		# If we want to use Redis...	
 		if config.redisSettings['enabled']:
-			None
+			self.__r.setex(
+				config.redisSettings['cacheName'],
+				json.dumps(
+					records[:config.redisSettings['cacheDepth']]
+				),
+				config.redisSettings['cacheExpire']
+			)
 	
 	def queueUp(self, record):
 		"""
@@ -52,7 +58,8 @@ class dataLayer:
 		# If we want to use Redis...	
 		if config.redisSettings['enabled']:
 			# Queue the record up.
-			self.__r.publish(config.redisSettings['qName'], record)
+			#self.__r.publish(config.redisSettings['qName'], record)
+			None
 	
 	def serialize(self, records):
 		"""

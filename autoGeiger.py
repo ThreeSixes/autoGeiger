@@ -87,7 +87,7 @@ class autoGeiger:
 		self.__dl.queueUp(thisSpl)
 		
 		# Cache the sample buffer.
-		self.__dl.cacheUo(self.__sampleBuf)
+		self.__dl.cacheUp(self.__sampleBuf)
 		
 		# Dump count data, alarm status, and start/end timestamps.
 		"""print("CPS		   : %s" %self.__samples[0]['cps'])
