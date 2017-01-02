@@ -40,15 +40,18 @@ class dataLayer:
 		Cache a number of records.
 		"""
 		
-		# If we want to use Redis...	
-		if config.redisSettings['enabled']:
-			self.__r.setex(
-				config.redisSettings['cacheName'],
-				json.dumps(
-					records[:config.redisSettings['cacheDepth']]
-				),
-				config.redisSettings['cacheExpire']
-			)
+		try:
+			# If we want to use Redis...	
+			if config.redisSettings['enabled']:
+				self.__r.setex(
+					config.redisSettings['cacheName'],
+					json.dumps(
+						records[:config.redisSettings['cacheDepth']]
+					),
+					config.redisSettings['cacheExpire']
+				)
+		except:
+			print(traceback.format_exc())
 	
 	def queueUp(self, record):
 		"""
