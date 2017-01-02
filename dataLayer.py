@@ -40,14 +40,14 @@ class dataLayer:
 		Cache a number of records.
 		"""
 		
+		print(json.dumps(records[:config.redisSettings['cacheDepth']]))
+		
 		try:
 			# If we want to use Redis...	
 			if config.redisSettings['enabled']:
 				self.__r.setex(
 					config.redisSettings['cacheName'],
-					json.dumps(
-						records[:config.redisSettings['cacheDepth']]
-					),
+					json.dumps(records[:config.redisSettings['cacheDepth']]),
 					config.redisSettings['cacheExpire']
 				)
 		except:
