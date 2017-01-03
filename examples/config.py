@@ -1,34 +1,41 @@
+# AutoGeiger tunable parameters
+autoGeiger = {
+	'splBuffDepth': 60 # How many samples do we want in our temprary buffer?
+}
+
 # Bosch BMP280 sensor.
 bmp280Settings = {
-    'enabled': True, # Do we want to use this sensor?
-    'busID': 1, # I2C bus ID.
-    'addr': 0x76 # I2C address of sensor.
+	'enabled': True, # Do we want to use this sensor?
+	'busID': 1, # I2C bus ID.
+	'addr': 0x76 # I2C address of sensor.
 }
 
 # Sensiron SHT31-D
 sht31dSettings = {
-    'enabled': True, # Do we want to use this sensor?
-    'busID': 1, # I2C bus ID.
-    'addr': 0x45 # I2C address of sensor.
+	'enabled': True, # Do we want to use this sensor?
+	'busID': 1, # I2C bus ID.
+	'addr': 0x45 # I2C address of sensor.
 }
 
 # MongoDB settings
 mongoSettings = {
-    'enabled': True, # Do we want to store things in MongoDB?
-    'host': '127.0.0.1', # Host/IP address of the MongoDB server.
-    'port': 27017, # Port number.
-    'dbName': 'autoGeiger', # Database name.
-    'collName': 'samples' # Colleciton name.
+	'enabled': True, # Do we want to store things in MongoDB?
+	'host': '127.0.0.1', # Host/IP address of the MongoDB server.
+	'port': 27017, # Port number.
+	'user': None, # MongoDB username.
+	'pass': None, # MongoDB password.
+	'dbName': 'autoGeiger', # Database name.
+	'collName': 'samples' # Colleciton name.
 }
 
 # Redis queue settings.
 redisSettings = {
-    'enabled': True, # Do we want to store things in MongoDB?
-    'host': '127.0.0.1', # Host/IP address of the MongoDB server.
-    'port': 27017, # Port number.
-    'psQName': 'autoGeiger', # Name of the pub/sub queue we want to drop our data on....
-    'htLastExpire': 2, # Number of seconds the hash table for the last data point expires.
-    'htLastName': 'autoGeigerLast' # Name of the entry holding our last entries.
+	'enabled': True, # Do we want to store things in MongoDB?
+	'host': '127.0.0.1', # Host/IP address of the MongoDB server.
+	'port': 6379, # Port number.
+	'qName': 'autoGeiger', # Name of the pub/sub queue on which we are putting records.
+	'cacheName': 'autoGeigerLast', # Store the last 30 seconds of activity here	.
+	'cacheExpire': 2 # Number of seconds the entry expires in.
 }
 
 # notifyPyClient settings.
