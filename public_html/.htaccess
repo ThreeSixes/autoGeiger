@@ -1,2 +1,2 @@
-RewriteEngine on
-RewriteRule ^api/([^/\.]+)/?$ api.php?t=$1 [L]
+RewriteEngine On
+RewriteRule ^api/(.*)$ api.php?t=$1 [QSA]
