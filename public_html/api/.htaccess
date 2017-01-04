@@ -1,1 +1,2 @@
+RewriteEngine on
 RewriteRule ^(.+)$ /?t=$1 [L] 
