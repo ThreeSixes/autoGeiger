@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^(.+) /api.php?t=$1 [L]
