@@ -1,3 +1,3 @@
 <?php
-print("Hello world...");
+print_r($_GET);
 ?>
