@@ -1,5 +1,1 @@
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Rewrite everything else through the pages parameter 
-  RewriteRule ^(.+)$ /?t=$1 [L] 
+RewriteRule ^(.+)$ /?t=$1 [L] 
