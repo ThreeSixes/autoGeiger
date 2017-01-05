@@ -20,7 +20,6 @@ Quick-and-dirty documentation:
  - /test: Test webserver.
  
  == Record format ==
- 
  Records from experiment are in JSON format as follows:
  {'humidRH': 29.57, 'dts': '2017-01-05 04:46:03.211875', 'fastFull': True, 'slowFull': True, 'humidTemp': 16.99, 'slowCpm': 0.0, 'alarm': False, 'baroPres': 101836.0, 'cpsGood': False, 'cps': 0, 'baroTemp': 17.39, 'fastCpm': 0.0}
  
