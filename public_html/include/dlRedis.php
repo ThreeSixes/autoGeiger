@@ -2,7 +2,7 @@
 // Make sure we're not loaded directly...
 
 // Load our configuration.
-require("config.php");
+require 'config.php';
 
 // RedisDB data layer.
 class dlRedis {

@@ -32,7 +32,7 @@ if (isset($_GET['t'])) {
                 print("At latest");
                 
                 // Configure data layer.
-                require('include/dlRedis.php');
+                require 'include/dlRedis.php';
                 $dlr = new dlRedis();
                 
                 print(" -> after data layer load");
@@ -48,7 +48,7 @@ if (isset($_GET['t'])) {
             // Get data from DB.
             case "histo":
                 // Configure data layer...
-                require('include/dlMongo.php');
+                require 'include/dlMongo.php';
                 $dlm = new dlMongo();
                 
                 // Send route parts to the historical data router.
