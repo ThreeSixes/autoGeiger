@@ -8,16 +8,18 @@ require 'config.php';
 class dlRedis {
     // Class-wide vars.
     private $rds = null;
+    private $cfg = null;
     
     // Constructor!
     function __construct() {
         global $rds;
+        global $cfg;
         
         try {
-            echo agConfig::config['redisHost'];
+            echo $cfg->config['redisHost'];
             // Set up our Redis object.
             $rds = new Redis();
-            $rds->connect(agConfig::config['redisHost'], agConfig::config['redisPort']);
+            $rds->connect($cfg->config['redisHost'], $cfg->config['redisPort']);
         }
         
         catch(Exception $e) {
@@ -30,7 +32,7 @@ class dlRedis {
     private function getLast() {
         global $rds;
         try {
-            print($rds->get(agConfig::config['redisCacheName']));
+            print($rds->get($cfg->config['redisCacheName']));
         }
         
         catch(Exception $e) {
