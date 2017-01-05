@@ -32,7 +32,7 @@ class dlRedis {
         
         # Send data as JSON.
         header("Content-Type: application/json");
-        print(trim($rds->get($cfg->config['redisCacheName'])));
+        print($rds->get($cfg->config['redisCacheName']));
     }
     
     public function router($route) {
