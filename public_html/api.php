@@ -19,8 +19,6 @@ if (isset($_GET['t'])) {
         // Break our requested path apart by /es.
         $routeParts = explode("/", $_GET['t']);
         
-        print_r($routeParts);
-        
         // Send the request to the appropriate base handler.
         switch ($routeParts[0]) {
             // Test call into API.
@@ -32,18 +30,12 @@ if (isset($_GET['t'])) {
             
             // Get the latest reading.
             case "latest":
-                print("At latest");
-                
                 // Configure data layer.
                 require 'include/dlRedis.php';
                 $dlr = new dlRedis();
                 
-                print(" -> after data layer load");
-                
                 // Send the request to the router.
                 $dlr->router($routeParts);
-                
-                print(" -> routed.");
                 break;
             
             // All requests served by MongoDB should go here.
