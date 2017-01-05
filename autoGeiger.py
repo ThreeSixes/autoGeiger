@@ -144,7 +144,8 @@ class autoGeiger:
 					'humidRH': None,
 					'humidTemp': None,
 					'baroTemp': None,
-					'baroPres': None
+					'baroPres': None,
+					'cpsGood': None
 				}
 				
 				try:
@@ -169,6 +170,14 @@ class autoGeiger:
 				thisSample['fastFull'] = True if len(self.__avgBuff) >= self.__fastCt else False
 				thisSample['slowFull'] = True if len(self.__avgBuff) >= self.__slowCt else False
 				
+				# Try to see if we have no counts...
+				if thisSample['slowFull']:
+					if sum(self.__avgBuff) > 0:
+						# We seem to have some counts.
+						thisSample['cpsGood'] = True
+					else:
+						# We don't seem to have any counts. This probably means there's a failure of some kind.
+						thisSample['cpsGood'] = False
 				
 				# Get humidity data.
 				try:
