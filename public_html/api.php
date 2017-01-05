@@ -30,6 +30,7 @@ if (isset($_GET['t'])) {
             
             // Get the latest reading.
             case "latest":
+                print("At latest");
                 // Include and set up the Redis data layer...
                 include('include/dlRedis.php');
                 $dlr = new dlRedis();
