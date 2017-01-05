@@ -22,7 +22,7 @@ class dlMongo {
   
     // Route historical data requests.
     function router($route) {
-        print("Hit Mongo router.");
+        return array(null, null);
     }
 }
 ?>

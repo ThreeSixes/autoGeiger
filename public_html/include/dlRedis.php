@@ -28,14 +28,14 @@ class dlRedis {
     // Try to ping the Redis server.
     private function ping() {
         global $rds;
-        # Send data as JSON.
-        header("Content-Type: application/json");
+        
+        $retVal = array("Content-Type: application/json", "{}");
         
         // Try to ping.
         if ($rds->ping() == "+PONG") {
-            print('{"alive": true}');
+            $retVal[1] = '{"alive": true}';
         } else {
-            print('{"alive": false}');
+            $retVal[1] = '{"alive": false}';
         }
     }
     
@@ -44,22 +44,24 @@ class dlRedis {
         global $rds;
         global $cfg;
         
-        # Send data as JSON.
-        header("Content-Type: application/json");
-        print($rds->get($cfg->config['redisCacheName']));
+        # Return all the things.
+        return array("Content-Type: application/json", $rds->get($cfg->config['redisCacheName']));
     }
     
     public function router($route) {
+        # Return value for headers and data.
+        $retVal = array(null, null);
+        
         switch($route[0]) {
             // Get the latest reading.
             case "latest":
-                $this->getLast();
+                $retVal = $this->getLast();
                 break;
             
             case "r":
                 switch($route[1]) {
                     case "test":
-                        $this->ping();
+                        $retVal = $this->ping();
                         break;
                     
                     default:
@@ -71,6 +73,7 @@ class dlRedis {
                 break;
         }
         
+        return $retVal;
     }
 }
 ?>
