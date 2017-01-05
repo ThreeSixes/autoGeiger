@@ -8,10 +8,10 @@ require("config.php");
 class dlMongo {
     // Class-wide vars.
     // This will be our mongoDB object.
-    private $mdb = null;
+    //private $mdb = null;
     
     // Constructor!
-    function __construct() {
+    public function __construct() {
         
     }
     
@@ -21,7 +21,7 @@ class dlMongo {
     }
   
     // Route historical data requests.
-    function router($req) {
+    function router($route) {
         print("Hit Mongo router.");
     }
 }
