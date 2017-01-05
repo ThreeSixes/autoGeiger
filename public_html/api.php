@@ -34,12 +34,14 @@ if (isset($_GET['t'])) {
         switch ($routeParts[0]) {
             // Test call into API.
             case "test":
+                header("Content-Type: application/json");
                 print('{"alive": true}');
                 break;
             
             // All requests served by Redis should go here.
             
             // Get the latest reading.
+            case "r":
             case "latest":
                 // Configure data layer.
                 require 'include/dlRedis.php';
@@ -52,6 +54,7 @@ if (isset($_GET['t'])) {
             // All requests served by MongoDB should go here.
             
             // Get data from DB.
+            case "m":
             case "histo":
                 // Configure data layer...
                 require 'include/dlMongo.php';
