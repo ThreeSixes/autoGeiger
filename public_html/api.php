@@ -24,7 +24,8 @@ Quick-and-dirty documentation:
  
  == Record format ==
  Records from experiment are in JSON format as follows:
- {'humidRH': 29.57, 'dts': '2017-01-05 04:46:03.211875', 'fastFull': True, 'slowFull': True, 'humidTemp': 16.99, 'slowCpm': 0.0, 'alarm': False, 'baroPres': 101836.0, 'cpsGood': False, 'cps': 0, 'baroTemp': 17.39, 'fastCpm': 0.0}
+ {'humidRH': 29.57, 'dts': '2017-01-05 04:46:03.211875', 'fastFull': True, 'slowFull': True, 'humidTemp': 16.99, 'slowCpm': 0.0,
+  'alarm': False, 'baroPres': 101836.0, 'cpsGood': False, 'cps': 0, 'baroTemp': 17.39, 'fastCpm': 0.0}
  
  Fields are as follows:
  {'humidRH': nn.nn, # Humdity in %rH
@@ -35,7 +36,8 @@ Quick-and-dirty documentation:
   'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
   'alarm': [True/False], # Ludlum 177 alarm output. Returns True when the Ludlum 177's alarm is going off.
   'baroPres': nnnnnn.n, # Barometric pressure in Pascals.
-  'cpsGood': [True/False], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong.
+  'cpsGood': [True/False/Null], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong. Null means the fast CPM buffer isn't full.tsw@p80
+  
   'cps': n, # Count of radiation detection events in the last second from the Ludlum 177.
   'baroTemp': nn.nn, # Barometer's temperature in degrees C.
   'fastCpm': n.n} # Counts per minute averaged from the last 4 seconds of data.
