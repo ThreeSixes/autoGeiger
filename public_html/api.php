@@ -17,6 +17,24 @@ Endpoints:
  - /r: Que-specific commands.
    - /test: Make sure queue is alive.
  - /test: Test webserver.
+ 
+ Records from experiment are in JSON format as follows:
+ {'humidRH': 29.57, 'dts': '2017-01-05 04:46:03.211875', 'fastFull': True, 'slowFull': True, 'humidTemp': 16.99, 'slowCpm': 0.0, 'alarm': False, 'baroPres': 101836.0, 'cpsGood': False, 'cps': 0, 'baroTemp': 17.39, 'fastCpm': 0.0}
+ 
+ Fields are as follows:
+ {'humidRH': nn.nn, # Humdity in %rH
+  'dts': 'YYYY-MM-DD HH:MM:SS.ffffff', # UTC timestamp
+  'fastFull': [True/False], # Fast average of counts per second (averaged over 4 sec)
+  'slowFull': [True/False], # Fast average of counts per second (averaged over 22 sec)
+  'humidTemp': nn.nn, # Humidity sensor's temperature.
+  'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
+  'alarm': [True/False], # Ludlum 177 alarm output.
+  'baroPres': nnnnnn.n, # Barometric pressure in Pascals.
+  'cpsGood': [True/False], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong.
+  'cps': n, # How many pulses did we get in the last second?
+  'baroTemp': nn.nn, # Barometer's temperature.
+  'fastCpm': n.n # Counts per minute averaged from the last 4 seconds of data.
+}
         </PRE>
     <BR />
     <?php print($addlMsg); ?>
