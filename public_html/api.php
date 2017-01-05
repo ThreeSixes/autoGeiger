@@ -1,8 +1,8 @@
 <?php
 
 // Include and set up the Redis data layer...
-include('include/dlRedis.php');
-include('include/dlMongo.php');
+require('include/dlRedis.php');
+require('include/dlMongo.php');
 
 // Show the root of /api.
 function showRoot() {
