@@ -31,6 +31,8 @@ class dlRedis {
     // Get the last record in the cache.
     private function getLast() {
         global $rds;
+        global $cfg;
+        
         try {
             print($rds->get($cfg->config['redisCacheName']));
         }
