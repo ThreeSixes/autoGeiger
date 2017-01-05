@@ -16,14 +16,12 @@ class dlRedis {
         global $cfg;
         
         try {
-            echo $cfg->config['redisHost'];
             // Set up our Redis object.
             $rds = new Redis();
             $rds->connect($cfg->config['redisHost'], $cfg->config['redisPort']);
         }
         
         catch(Exception $e) {
-            print("At __construct()::\n");
             print($e->getMessage()); 
         }
     }
@@ -38,7 +36,6 @@ class dlRedis {
         }
         
         catch(Exception $e) {
-            print("At getLast()::\n");
             print($e->getMessage()); 
         } 
         
