@@ -13,8 +13,32 @@ function showRoot() {
 if (isset($_GET['t'])) {
     // Do we have anything in $_GET?
     if (strlen($_GET['t']) >= 1) {
-        $x = explode("/", $_GET['t']);
-        print_r($x);
+        // Break our requested path apart by /es.
+        $routeParts = explode("/", $_GET['t']);
+        
+        // Send the request to the appropriate base handler.
+        switch ($routeParts[0]) {
+            // Test call into API.
+            case "test":
+                print('{"alive": true}');
+                break;
+            
+            // Get the latest reading.
+            case "latest":
+                print("Get latest data...");
+                break;
+            
+            // Get data from DB.
+            case "histo":
+                print("Get historical data...");
+                break;
+            
+            // Dafuhq?
+            default:
+                showRoot();
+                break;
+        }
+    
     } else {
         // Show the root.
         showRoot();
