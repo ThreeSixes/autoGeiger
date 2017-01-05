@@ -35,8 +35,12 @@ if (isset($_GET['t'])) {
                 require('include/dlRedis.php');
                 $dlr = new dlRedis();
                 
+                print(" -> after data layer load");
+                
                 // Send the request to the router.
                 $dlr->router($routeParts);
+                
+                print(" -> routed.");
                 break;
             
             // All requests served by MongoDB should go here.
