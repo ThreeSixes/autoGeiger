@@ -19,7 +19,10 @@ class dlRedis {
         
         // Set up our Redis object.
         $rds = new Redis();
-        $rds->connect("127.0.0.1", 6379);
+        $rds->connect(
+            $cfg->config['redisHost'],
+            $cfg->config['redisPort']
+        );
     }
     
     // Get the last record in the cache.
