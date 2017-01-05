@@ -33,8 +33,7 @@ Endpoints:
   'cpsGood': [True/False], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong.
   'cps': n, # How many pulses did we get in the last second?
   'baroTemp': nn.nn, # Barometer's temperature.
-  'fastCpm': n.n # Counts per minute averaged from the last 4 seconds of data.
-}
+  'fastCpm': n.n} # Counts per minute averaged from the last 4 seconds of data.
         </PRE>
     <BR />
     <?php print($addlMsg); ?>
