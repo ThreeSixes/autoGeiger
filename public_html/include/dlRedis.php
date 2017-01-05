@@ -25,6 +25,14 @@ class dlRedis {
         );
     }
     
+    // Try to ping the Redis server.
+    private function ping() {
+        global $rds;
+        
+        $pingRes = $rds->ping();
+        print_r($pingRes);
+    }
+    
     // Get the last record in the cache.
     private function getLast() {
         global $rds;
@@ -40,6 +48,19 @@ class dlRedis {
             // Get the latest reading.
             case "latest":
                 $this->getLast();
+                break;
+            
+            case "r":
+                print("Made it... ");
+                switch($route[1]) {
+                    case "test":
+                        print("Hit.");
+                        $this->ping();
+                        break;
+                    
+                    default:
+                        break;
+                }
                 break;
             
             default:
