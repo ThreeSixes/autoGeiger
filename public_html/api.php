@@ -1,8 +1,10 @@
 <?php
-print("cournt(t) = " . count($_GET['t']));
 
+if (isset($_GET['t'])) {
+    print("I can haz t!\n");
+}
 // Do we have anything in $_GET?
-if (count($_GET['t']) > 1) {
+if (strlen($_GET['t']) >= 1) {
     $x = explode($_GET['t'], "/");
     print_r($x);
 } else {
