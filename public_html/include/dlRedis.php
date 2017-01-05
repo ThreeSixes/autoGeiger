@@ -15,16 +15,9 @@ class dlRedis {
         global $rds;
         global $cfg;
         
-        try {
-            // Set up our Redis object.
-            $rds = new Redis();
-            $rds->connect($cfg->config['redisHost'], $cfg->config['redisPort']);
-            echo "Server is running: ".$rds->ping();
-        }
-        
-        catch(Exception $e) {
-            print($e->getMessage()); 
-        }
+        // Set up our Redis object.
+        $rds = new Redis();
+        $rds->connect($cfg->config['redisHost'], $cfg->config['redisPort']);
     }
     
     // Get the last record in the cache.
@@ -32,18 +25,10 @@ class dlRedis {
         global $rds;
         global $cfg;
         
-        try {
-            print($rds->get($cfg->config['redisCacheName']));
-        }
-        
-        catch(Exception $e) {
-            print($e->getMessage()); 
-        } 
-        
+        print($rds->get($cfg->config['redisCacheName']));       
     }
     
     public function router($route) {
-        
         switch($route[0]) {
             // Get the latest reading.
             case "latest":
