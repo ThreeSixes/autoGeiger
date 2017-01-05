@@ -7,11 +7,11 @@ function showRoot($addlMsg = "") {
         <TITLE>PUBROW</TITLE>
     </HEAD>
     <BODY>
-Endpoints:
+Quick-and-dirty documentation:
         <PRE>
 == API ==
 <?php print($_SERVER['HTTP_HOST']); ?>/api: You are here.
- - /histo: Get historical readings.
+ - /histo: Get historical readings. This is not yet implemented.
  - /latest: Get the latest readings.
  - /m: Database-specific commands.
    - /test: Make sure database is reachable.
