@@ -23,20 +23,28 @@ if (isset($_GET['t'])) {
                 print('{"alive": true}');
                 break;
             
+            // All requests served by Redis should go here.
+            
             // Get the latest reading.
             case "latest":
-                // Include the Redis data layer...
+                // Include and set up the Redis data layer...
                 include('include/dlRedis.php');
                 $dlr = new dlRedis();
-                $dlr->getLast();
+                
+                // Send the request to the router.
+                $dlr->router($routeParts);
                 break;
+            
+            // All requests served by MongoDB should go here.
             
             // Get data from DB.
             case "histo":
-                // Include the Mongod ata layer...
+                // Include the Mongo data layer...
                 include('include/dlMongo.php');
                 $dlm = new dlMongo();
-                $dlm->getLastN($_GET['t']);
+                
+                // Send route parts to the historical data router.
+                $dlm->router($routeParts);
                 break;
             
             // Dafuhq?

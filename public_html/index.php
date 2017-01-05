@@ -1,3 +1,3 @@
 <?php
-print("Waaaaarrrrgaaarbllllll");
+print("PUBROW experiment.");
 ?>

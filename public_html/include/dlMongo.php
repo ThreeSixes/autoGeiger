@@ -11,14 +11,15 @@ class dlMongo {
     function __construct() {
         
     }
+    
     // Get the last N records from the database.
     private function getLastN($numRecords) {
         return null;
     }
   
     // Route historical data requests.
-    function histoRouter($req) {
-        print("Hit router.");
+    function router($req) {
+        print("Hit Mongo router.");
     }
 }
 ?>
