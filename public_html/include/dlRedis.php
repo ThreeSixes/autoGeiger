@@ -28,9 +28,15 @@ class dlRedis {
     // Try to ping the Redis server.
     private function ping() {
         global $rds;
+        # Send data as JSON.
+        header("Content-Type: application/json");
         
-        $pingRes = $rds->ping();
-        print_r($pingRes);
+        // Try to ping.
+        if ($rds->ping() == "+PONG") {
+            print('{"alive": true}');
+        } else {
+            print('{"alive": false}');
+        }
     }
     
     // Get the last record in the cache.
@@ -51,10 +57,8 @@ class dlRedis {
                 break;
             
             case "r":
-                print("Made it... ");
                 switch($route[1]) {
                     case "test":
-                        print("Hit.");
                         $this->ping();
                         break;
                     
