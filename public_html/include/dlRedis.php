@@ -46,6 +46,9 @@ class dlRedis {
             case "latest":
                 getLast();
                 break;
+            default:
+                echo "PUNT.";
+                break;
         }
         
     }
