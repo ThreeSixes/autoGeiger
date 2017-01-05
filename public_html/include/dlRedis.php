@@ -17,15 +17,14 @@ class dlRedis {
         
         // Set up our Redis object.
         $rds = new Redis();
-        $rds->connect($cfg->config['redisHost'], $cfg->config['redisPort']);
+        $rds->connect("127.0.0.1", 6379);
     }
     
     // Get the last record in the cache.
     private function getLast() {
         global $rds;
         global $cfg;
-        $rds->set("X", "Y");
-        print($rds-get("X"));
+        
         print_r($rds->get($cfg->config['redisCacheName']));       
     }
     
