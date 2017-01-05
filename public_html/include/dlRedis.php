@@ -7,22 +7,36 @@ require("config.php");
 // RedisDB data layer.
 class dlRedis {
     // Class-wide vars.
-    
     private $rds = null;
     
     // Constructor!
     function __construct() {
         global $rds;
         
-        // Set up our Redis object.
-        $rds = new Redis();
-        $rds->connect(agConfig::config['redisHost'], agConfig::config['redisPort']);
+        try {
+            // Set up our Redis object.
+            $rds = new Redis();
+            $rds->connect(agConfig::config['redisHost'], agConfig::config['redisPort']);
+        }
+        
+        catch(Exception $e) {
+            echo "At __construct()::\n";
+            echo $e->getMessage(); 
+        }
     }
     
     // Get the last record in the cache.
     private function getLast() {
         global $rds;
-        print($rds->get(agConfig::config['redisCacheName']));
+        try {
+            print($rds->get(agConfig::config['redisCacheName']));
+        }
+        
+        catch(Exception $e) {
+            echo "At getLast()::\n";
+            echo $e->getMessage(); 
+        } 
+        
     }
     
     public function router($route) {
