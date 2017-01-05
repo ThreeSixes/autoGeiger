@@ -14,6 +14,7 @@ class dlRedis {
         global $rds;
         
         try {
+            echo agConfig::config['redisHost'];
             // Set up our Redis object.
             $rds = new Redis();
             $rds->connect(agConfig::config['redisHost'], agConfig::config['redisPort']);
