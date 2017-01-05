@@ -21,8 +21,8 @@ class dlRedis {
         }
         
         catch(Exception $e) {
-            echo "At __construct()::\n";
-            echo $e->getMessage(); 
+            print("At __construct()::\n");
+            print($e->getMessage()); 
         }
     }
     
@@ -34,20 +34,22 @@ class dlRedis {
         }
         
         catch(Exception $e) {
-            echo "At getLast()::\n";
-            echo $e->getMessage(); 
+            print("At getLast()::\n");
+            print($e->getMessage()); 
         } 
         
     }
     
     public function router($route) {
+        
+        print_r($route);
         switch($route[0]) {
             // Get the latest reading.
             case "latest":
                 getLast();
                 break;
             default:
-                echo "PUNT.";
+                print("PUNT.");
                 break;
         }
         
