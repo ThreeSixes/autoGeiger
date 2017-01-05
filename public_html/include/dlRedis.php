@@ -46,14 +46,13 @@ class dlRedis {
     
     public function router($route) {
         
-        print_r($route);
         switch($route[0]) {
             // Get the latest reading.
             case "latest":
-                getLast();
+                $this->getLast();
                 break;
+            
             default:
-                print("PUNT.");
                 break;
         }
         
