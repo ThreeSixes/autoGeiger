@@ -9,6 +9,7 @@ function showRoot() {
     <BODY>
 Endpoints:
         <PRE>
+<?php print($_SERVER['HTTP_HOST']); ?>/api: You are here.
  - /histo: Get historical readings.
  - /latest: Get the latest readings.
  - /test: Test webserver.
