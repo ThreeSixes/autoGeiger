@@ -12,6 +12,10 @@ Endpoints:
 <?php print($_SERVER['HTTP_HOST']); ?>/api: You are here.
  - /histo: Get historical readings.
  - /latest: Get the latest readings.
+ - /m: Database-specific commands.
+   - /test: Make sure database is reachable.
+ - /r: Que-specific commands.
+   - /test: Make sure queue is alive.
  - /test: Test webserver.
         </PRE>
     <BR />
