@@ -15,6 +15,8 @@ class dlRedis {
         global $rds;
         global $cfg;
         
+        $cfg = new agConfig();
+        
         // Set up our Redis object.
         $rds = new Redis();
         $rds->connect("127.0.0.1", 6379);
@@ -25,7 +27,7 @@ class dlRedis {
         global $rds;
         global $cfg;
         
-        print($rds->get($cfg->config()['redisCacheName']));
+        print($rds->get($cfg->config['redisCacheName']));
     }
     
     public function router($route) {
