@@ -30,8 +30,9 @@ class dlRedis {
         global $rds;
         global $cfg;
         
+        # Send data as JSON.
         header("Content-Type: application/json");
-        print($rds->get($cfg->config['redisCacheName']));
+        print(trim($rds->get($cfg->config['redisCacheName'])));
     }
     
     public function router($route) {
