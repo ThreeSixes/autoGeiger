@@ -31,7 +31,7 @@ if (isset($_GET['t'])) {
                 // Include and set up the Redis data layer...
                 include('include/dlRedis.php');
                 $dlr = new dlRedis();
-                
+                print_r($routeParts);
                 // Send the request to the router.
                 $dlr->router($routeParts);
                 break;
