@@ -9,6 +9,7 @@ function showRoot($addlMsg = "") {
     <BODY>
 Endpoints:
         <PRE>
+== API ==
 <?php print($_SERVER['HTTP_HOST']); ?>/api: You are here.
  - /histo: Get historical readings.
  - /latest: Get the latest readings.
@@ -18,6 +19,8 @@ Endpoints:
    - /test: Make sure queue is alive.
  - /test: Test webserver.
  
+ == Record format ==
+ 
  Records from experiment are in JSON format as follows:
  {'humidRH': 29.57, 'dts': '2017-01-05 04:46:03.211875', 'fastFull': True, 'slowFull': True, 'humidTemp': 16.99, 'slowCpm': 0.0, 'alarm': False, 'baroPres': 101836.0, 'cpsGood': False, 'cps': 0, 'baroTemp': 17.39, 'fastCpm': 0.0}
  
@@ -26,13 +29,13 @@ Endpoints:
   'dts': 'YYYY-MM-DD HH:MM:SS.ffffff', # UTC timestamp
   'fastFull': [True/False], # Fast average of counts per second (averaged over 4 sec)
   'slowFull': [True/False], # Fast average of counts per second (averaged over 22 sec)
-  'humidTemp': nn.nn, # Humidity sensor's temperature.
+  'humidTemp': nn.nn, # Humidity sensor's temperature in degrees C.
   'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
-  'alarm': [True/False], # Ludlum 177 alarm output.
+  'alarm': [True/False], # Ludlum 177 alarm output. Returns True when the Ludlum 177's alarm is going off.
   'baroPres': nnnnnn.n, # Barometric pressure in Pascals.
   'cpsGood': [True/False], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong.
-  'cps': n, # How many pulses did we get in the last second?
-  'baroTemp': nn.nn, # Barometer's temperature.
+  'cps': n, # Count of radiation detection events in the last second from the Ludlum 177.
+  'baroTemp': nn.nn, # Barometer's temperature in degrees C.
   'fastCpm': n.n} # Counts per minute averaged from the last 4 seconds of data.
         </PRE>
     <BR />
