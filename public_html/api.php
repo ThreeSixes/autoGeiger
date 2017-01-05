@@ -1,13 +1,13 @@
 <?php
 // Show the root of /api.
 function showRoot() {
-    ?>
+?>
 <HTML>
     <HEAD>
         <TITLE>PUBROW</TITLE>
     </HEAD>
     <BODY>
-        Routes
+Endpoints:
         <PRE>
  - /histo: Get historical readings.
  - /latest: Get the latest readings.
@@ -15,7 +15,7 @@ function showRoot() {
         </PRE>
     </BODY>
 </HTML>
-    <?php
+<?php
 }
 
 /*
