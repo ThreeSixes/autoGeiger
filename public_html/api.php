@@ -1,8 +1,21 @@
 <?php
 // Show the root of /api.
 function showRoot() {
-    // This is where we'd display the data we want to display when someone hits the root of API (hasn't sent a command).
-    print("Route -> API root.");
+    ?>
+<HTML>
+    <HEAD>
+        <TITLE>PUBROW</TITLE>
+    </HEAD>
+    <BODY>
+        Routes
+        <PRE>
+ - /histo: Get historical readings.
+ - /latest: Get the latest readings.
+ - /test: Test webserver.
+        </PRE>
+    </BODY>
+</HTML>
+    <?php
 }
 
 /*
