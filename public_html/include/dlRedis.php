@@ -24,7 +24,8 @@ class dlRedis {
     private function getLast() {
         global $rds;
         global $cfg;
-        
+        $rds->set("X", "Y");
+        print($rds-get("X"));
         print_r($rds->get($cfg->config['redisCacheName']));       
     }
     
