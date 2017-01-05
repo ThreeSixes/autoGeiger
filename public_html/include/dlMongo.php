@@ -1,6 +1,9 @@
 <?php
 // Make sure we're not loaded directly...
 
+// Load our configuration.
+require("config.php");
+
 // MongoDB data layer.
 class dlMongo {
     // Class-wide vars.

@@ -1,4 +1,5 @@
 <?php
+
 // Show the root of /api.
 function showRoot() {
     // This is where we'd display the data we want to display when someone hits the root of API (hasn't sent a command).
