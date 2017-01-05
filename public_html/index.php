@@ -16,7 +16,7 @@
         <BR />
         <B>R</B>adiation
         <BR />
-        <B>O</B>observeration
+        <B>O</B>bserveration
         <BR />
         <B>W</B>orker
         <BR />
