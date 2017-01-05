@@ -25,12 +25,18 @@ if (isset($_GET['t'])) {
             
             // Get the latest reading.
             case "latest":
-                print("Get latest data...");
+                // Include the Redis data layer...
+                include('include/dlRedis.php');
+                $dlr = new dlRedis();
+                $dlr->getLast();
                 break;
             
             // Get data from DB.
             case "histo":
-                print("Get historical data...");
+                // Include the Mongod ata layer...
+                include('include/dlMongo.php');
+                $dlm = new dlMongo();
+                $dlm->getLastN($_GET['t']);
                 break;
             
             // Dafuhq?
