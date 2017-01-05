@@ -8,16 +8,20 @@ require("config.php");
 class dlRedis {
     // Class-wide vars.
     
-    // This will be our Redis object.
-    private $rds = new Redis();
+    private $rds = null;
     
     // Constructor!
     function __construct() {
+        global $rds;
+        
+        // Set up our Redis object.
+        $rds = new Redis();
         $rds->connect(agConfig::config['redisHost'], agConfig::config['redisPort']);
     }
     
     // Get the last record in the cache.
     private function getLast() {
+        global $rds;
         print($rds->get(agConfig::config['redisCacheName']));
     }
     
