@@ -1,5 +1,6 @@
 <?php
-// Make sure we're not loaded directly...
+// Don't allow this to be loaded directly 'cuz security.
+if (!defined('LOADFROMAPI')) die("ZOMGSKIDDIEZ!");
 
 // Load our configuration.
 require 'config.php';

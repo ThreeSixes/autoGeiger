@@ -1,4 +1,7 @@
 <?php
+// Set this so we don't break our includes.
+define("LOADFROMAPI", True);
+
 // Show the root of /api.
 function showRoot($addlMsg = "") {
 ?>
