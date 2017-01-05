@@ -25,7 +25,7 @@ class dlRedis {
         global $rds;
         global $cfg;
         
-        print($rds->get($cfg->config['redisCacheName']));
+        print($rds->get($cfg->config()['redisCacheName']));
     }
     
     public function router($route) {
