@@ -1,7 +1,7 @@
 try:
 	import config
 except:
-	print("Failed to open config.py. Please copy config.py.example to config.py and edit it.")
+	print("Failed to open config.py. Please copy example/config.py to config.py and edit it.")
 
 import time
 import datetime
@@ -237,6 +237,7 @@ class autoGeiger:
 				None
 
 try:
+	# Start the service!
 	ag = autoGeiger()
 	ag.readCont()
 
