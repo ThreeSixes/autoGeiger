@@ -171,8 +171,9 @@ class autoGeiger:
 				thisSample['slowFull'] = True if len(self.__avgBuff) >= self.__slowCt else False
 				
 				# Try to see if we have no counts...
-				if thisSample['slowFull']:
+				if thisSample['slowFull'] == True:
 					if sum(self.__avgBuff) > 0:
+						print("SHDBEGOOD")
 						# We seem to have some counts.
 						thisSample['cpsGood'] = True
 					else:
