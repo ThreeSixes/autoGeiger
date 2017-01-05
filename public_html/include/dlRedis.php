@@ -30,6 +30,7 @@ class dlRedis {
         global $rds;
         global $cfg;
         
+        header("Content-Type: application/json");
         print($rds->get($cfg->config['redisCacheName']));
     }
     
