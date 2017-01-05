@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^api(/.*)$ api.php?t=$1 [QSA]
+RewriteRule ^api/?(.*)$ api.php?t=$1 [QSA]
