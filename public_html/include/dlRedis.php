@@ -19,6 +19,7 @@ class dlRedis {
             // Set up our Redis object.
             $rds = new Redis();
             $rds->connect($cfg->config['redisHost'], $cfg->config['redisPort']);
+            echo "Server is running: ".$rds->ping();
         }
         
         catch(Exception $e) {
