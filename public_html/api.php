@@ -1,9 +1,4 @@
 <?php
-
-// Include and set up the Redis data layer...
-require('include/dlRedis.php');
-require('include/dlMongo.php');
-
 // Show the root of /api.
 function showRoot() {
     // This is where we'd display the data we want to display when someone hits the root of API (hasn't sent a command).
@@ -37,6 +32,7 @@ if (isset($_GET['t'])) {
                 print("At latest");
                 
                 // Configure data layer.
+                require('include/dlRedis.php');
                 $dlr = new dlRedis();
                 
                 // Send the request to the router.
@@ -48,6 +44,7 @@ if (isset($_GET['t'])) {
             // Get data from DB.
             case "histo":
                 // Configure data layer...
+                require('include/dlMongo.php');
                 $dlm = new dlMongo();
                 
                 // Send route parts to the historical data router.
