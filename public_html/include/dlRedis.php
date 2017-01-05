@@ -25,7 +25,7 @@ class dlRedis {
         global $rds;
         global $cfg;
         
-        print_r($rds->get($cfg->config['redisCacheName']));       
+        print_r($rds->get("autoGeigerLast"));
     }
     
     public function router($route) {
