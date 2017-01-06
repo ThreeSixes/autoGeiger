@@ -38,6 +38,8 @@ class dlRedis {
         } else {
             $retVal[1] = '{"alive": false}';
         }
+        
+        return $retVal;
     }
     
     // Get the last record in the cache.
