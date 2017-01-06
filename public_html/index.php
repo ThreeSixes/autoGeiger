@@ -21,6 +21,8 @@
         <B>W</B>orker
         <BR />
         <BR />
+        For more information see the <a href="https://www.youtube.com/playlist?list=PL2E0_v3_G6T9DGYTyCMgVBn4aFwTBw84D">YouTube playlist</a>.
+        <BR />
         Source available on <A HREF="https://github.com/ThreeSixes/autoGeiger">GitHub</A>
     </BODY>
 </HTML>
