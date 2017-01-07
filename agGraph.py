@@ -83,6 +83,8 @@ class agGraph:
 			# Add geiger counter graph properties.
 			graphSpec = graphSpec + self.__geigerGen
 		
+		print_r(graphSpec)
+		
 		# Try the thing.
 		res = rrdtool.graph(graphSpec)
 		
