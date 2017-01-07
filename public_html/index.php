@@ -6,6 +6,9 @@
         <H3>PUBROW background radiation experiment.</H3>
         <BR />
         <BR />
+        <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
+        <BR />
+        <BR />
         Dafuhq is PUBROW?
         <BR />
         <B>P</B>ortland
