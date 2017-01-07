@@ -19,7 +19,7 @@ class agGraph:
 		"""
 		# Try to store our geiger counter data.
 		cpmDataStr = "N:%s:%s" %(sample['slowCpm'], sample['fastCpm'])
-		countsRet = rrdtool.update(config.graph['geigerRRDPath'], dataStr);
+		countsRet = rrdtool.update(config.graphSettings['geigerRRDPath'], dataStr);
 		
 		# If it blew up puke an error.
 		if countsRet:
