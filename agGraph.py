@@ -22,17 +22,19 @@ class agGraph:
 			"-a", "PNG",
 			"-t", "Geiger counter readings (60 min)",
 			"--vertical-label", "Counts/time",
-			"--right-axis-label", "Alarm on",
-			"--right-axis", "100:0",
+			#"--right-axis-label", "Alarm on",
+			#"--right-axis", "100:0",
 			"--width", "800", "--watermark", "%s UTC" %datetime.datetime.utcnow(),
 			"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
+			#"CDEF:scaledAlarm=alarm,100,*",
 			"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
-			"LINE2:scpm#FFFF00:Slow counts/min (22 sec average)",
-			"LINE3:cps#00FF00:Counts/sec",
-			"LINE4:alarm#FF0000:GC alarm"]
+			"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
+			"LINE1:cps#00FF00:Counts/sec",
+			"LINE1:alarm#FF0000:GC alarm"]
+			#"LINE1:scaledAlarm#FF0000:GC alarm"]
 		}
 	
 	def createGraph(self, whichGraph):
