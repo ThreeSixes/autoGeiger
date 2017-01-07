@@ -16,7 +16,7 @@ class agGraph:
 		self.__grphImgGen = [
 			"-M",
 			"-a", "PNG",
-			"--width", "800", "--watermark", "%s UTC" %datetime.datetime.utcnow(),
+			"--width", "800"
 		]
 		
 		# Generic elements for geiger counter readings.
@@ -76,14 +76,12 @@ class agGraph:
 		"""
 		
 		# Add generic graph properties.
-		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen
+		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen + ["--watermark", "%s UTC" %datetime.datetime.utcnow()]
 		
 		# What graph type do we have?
 		if whichGraph.find("geiger") == 0:
 			# Add geiger counter graph properties.
 			graphSpec = graphSpec + self.__geigerGen
-		
-		print_r(graphSpec)
 		
 		# Try the thing.
 		res = rrdtool.graph(graphSpec)
