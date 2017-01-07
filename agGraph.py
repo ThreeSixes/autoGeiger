@@ -33,5 +33,5 @@ class agGraph:
 		geigerRet = rrdtool.update(config.graphSettings['geigerRRDPath'], geigerSplStr);
 		
 		# If it blew up puke an error.
-		if countsRet:
+		if geigerRet:
 			print rrdtool.error()
