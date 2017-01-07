@@ -74,6 +74,7 @@ class autoGeiger:
 		
 		# Graph the appropriate things.
 		self.__agg.createGraph('geiger1h')
+		self.__agg.createGraph('geiger1d')
 		
 		return
 	
