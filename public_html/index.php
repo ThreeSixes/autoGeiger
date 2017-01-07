@@ -5,6 +5,7 @@
     <BODY>
         <H3>PUBROW background radiation experiment.</H3>
         <BR />
+        Data graph series:
         <BR />
         <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
         <BR />
