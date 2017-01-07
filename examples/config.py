@@ -3,6 +3,14 @@ autoGeiger = {
 	'splBuffDepth': 60 # How many samples do we want in our temprary buffer?
 }
 
+# Graphing engine settings.
+grpahSettings = {
+	'geigerRRDPath': '/opt/autoGeiger/public_html/1hGeiger.rrd', # Location of our 1h geiger counter data.
+	'tempRRDPath': '/opt/autoGeiger/public_html/1hTemp.rrd', # Location of our 1h temperature data.
+	'humidRRDPath': '/opt/autoGeiger/public_html/1hHumid.rrd', # Location of our 1h humidity data.
+	'baroRRDPath': '/opt/autoGeiger/public_html/1hBaro.rrd' # Location of our 1h barometer data.
+}
+
 # Bosch BMP280 sensor.
 bmp280Settings = {
 	'enabled': True, # Do we want to use this sensor?

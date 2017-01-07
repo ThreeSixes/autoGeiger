@@ -10,6 +10,7 @@ import traceback
 from hwInterface import hwInterface
 from dataLayer import dataLayer
 from notifyPyClient import notifyPyClient
+from agGraph import agGraph
 from pprint import pprint
 
 class autoGeiger:
@@ -28,6 +29,9 @@ class autoGeiger:
 			
 			# Set up our data layer.
 			self.__dl = dataLayer()
+			
+			# Set up graphing API
+			self.__agg = agGraph()
 			
 			# Is the notification subsystem enabled?
 			self.__nfyE = config.nfySettings['enabled']
@@ -88,6 +92,9 @@ class autoGeiger:
 		
 		# Cache the sample buffer.
 		self.__dl.cacheUp(thisSpl)
+		
+		# Update RRDtool database.
+		self.__agg.updateRRD(thisSpl)
 		
 		# Dump count data, alarm status, and start/end timestamps.
 		"""print("CPS		   : %s" %self.__samples[0]['cps'])
