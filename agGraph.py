@@ -12,6 +12,30 @@ class agGraph:
 		Static graph handler.
 		"""
 		
+		# Generic graph image format data.
+		self.__grphImgGen = [
+			"-M",
+			"-a", "PNG",
+			"--width", "800", "--watermark", "%s UTC" %datetime.datetime.utcnow(),
+		]
+		
+		# Generic elements for geiger counter readings.
+		self.__geigerGen = [
+			"--vertical-label", "Counts/time",
+			#"--right-axis-label", "Alarm on",
+			#"--right-axis", "100:0",
+			"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['geigerRRDPath'],
+			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
+			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
+			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
+			#"CDEF:scaledAlarm=alarm,100,*",
+			"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
+			"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
+			"LINE1:cps#00FF00:Counts/sec",
+			"LINE1:alarm#FF0000:GC alarm"
+			#"LINE1:scaledAlarm#FF0000:GC alarm"
+		]
+		
 		# Graph parameters.
 		self.__graphs = {
 			'geiger1h': [
@@ -19,23 +43,7 @@ class agGraph:
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-3600",
-				"-M",
-				"-a", "PNG",
-				"-t", "Geiger counter readings (60 min)",
-				"--vertical-label", "Counts/time",
-				#"--right-axis-label", "Alarm on",
-				#"--right-axis", "100:0",
-				"--width", "800", "--watermark", "%s UTC" %datetime.datetime.utcnow(),
-				"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['geigerRRDPath'],
-				"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
-				"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
-				"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
-				#"CDEF:scaledAlarm=alarm,100,*",
-				"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
-				"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
-				"LINE1:cps#00FF00:Counts/sec",
-				"LINE1:alarm#FF0000:GC alarm"
-				#"LINE1:scaledAlarm#FF0000:GC alarm"
+				"-t", "Geiger counter readings (60 min)"
 			],
 			'geiger1d': [
 				"/opt/autoGeiger/public_html/geiger1d.png",
@@ -44,21 +52,21 @@ class agGraph:
 				"--start", "end-86400",
 				"-M",
 				"-a", "PNG",
-				"-t", "Geiger counter readings (24 hour)",
-				"--vertical-label", "Counts/time",
-				#"--right-axis-label", "Alarm on",
-				#"--right-axis", "100:0",
-				"--width", "800", "--watermark", "%s UTC" %datetime.datetime.utcnow(),
-				"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['geigerRRDPath'],
-				"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
-				"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
-				"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
-				#"CDEF:scaledAlarm=alarm,100,*",
-				"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
-				"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
-				"LINE1:cps#00FF00:Counts/sec",
-				"LINE1:alarm#FF0000:GC alarm"
-				#"LINE1:scaledAlarm#FF0000:GC alarm"
+				"-t", "Geiger counter readings (24 hour)"
+			],
+			'geiger1w': [
+				"/opt/autoGeiger/public_html/geiger1w.png",
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-604800",
+				"-t", "Geiger counter readings (1 week)"
+			],
+			'geiger1m': [
+				"/opt/autoGeiger/public_html/geiger1m.png",
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-2592000",
+				"-t", "Geiger counter readings (30 days)"
 			]
 		}
 	
@@ -67,8 +75,16 @@ class agGraph:
 		Generate a given graph.
 		"""
 		
+		# Add generic graph properties.
+		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen
+		
+		# What graph type do we have?
+		if whichGraph.find("geiger") == 0:
+			# Add geiger counter graph properties.
+			graphSpec = graphSpec + self.__geigerGen
+		
 		# Try the thing.
-		res = rrdtool.graph(self.__graphs[whichGraph])
+		res = rrdtool.graph(graphSpec)
 		
 		if res:
 			print rrdtool.error()
