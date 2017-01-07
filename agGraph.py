@@ -20,10 +20,10 @@ class agGraph:
 			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
-			"LINE1:fcpm#FF00FF:Fast counts/min",
-			"LINE2:scpm#FFFF00:Slow counts/min",
+			"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
+			"LINE2:scpm#FFFF00:Slow counts/min (22 sec average)",
 			"LINE3:cps#00FF00:Counts/sec",
-			"LINE4:alarm#FF0000:Alarm"]
+			"LINE4:alarm#FF0000:GC alarm"]
 		}
 	
 	def createGraph(self, whichGraph):
