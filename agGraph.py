@@ -6,6 +6,16 @@ except:
 import rrdtool
 
 class agGraph:
+	def __init__(self):
+		"""
+		Static graph handler.
+		"""
+		
+		# Graph parameters.
+		self.__graphs = {
+			
+		}
+	
 	def createGraph(self, whichGraph):
 		"""
 		Generate a given graph.
@@ -15,11 +25,12 @@ class agGraph:
 	
 	def updateRRD(self, sample):
 		"""
-		Update the RRD data files(s)
+		Update the RRD data files with the current data sample.
 		"""
-		# Try to store our geiger counter data.
-		cpmDataStr = "N:%s:%s" %(sample['slowCpm'], sample['fastCpm'])
-		countsRet = rrdtool.update(config.graphSettings['geigerRRDPath'], cpmDataStr);
+		
+		# Create a string to store in RRD for geiger counter data.
+		geigerSplStr = "N:%s:%s:%s:%s" %(sample['slowCpm'], sample['fastCpm'], sample['cps'], int['alarm'])
+		geigerRet = rrdtool.update(config.graphSettings['geigerRRDPath'], geigerSplStr);
 		
 		# If it blew up puke an error.
 		if countsRet:

@@ -4,11 +4,9 @@ autoGeiger = {
 }
 
 # Graphing engine settings.
-grpahSettings = {
-	'geigerRRDPath': '/opt/autoGeiger/public_html/1hGeiger.rrd', # Location of our 1h geiger counter data.
-	'tempRRDPath': '/opt/autoGeiger/public_html/1hTemp.rrd', # Location of our 1h temperature data.
-	'humidRRDPath': '/opt/autoGeiger/public_html/1hHumid.rrd', # Location of our 1h humidity data.
-	'baroRRDPath': '/opt/autoGeiger/public_html/1hBaro.rrd' # Location of our 1h barometer data.
+graphSettings = {
+	'geigerRRDPath': '/opt/autoGeiger/geiger.rrd', # Location of geiger counter RRD.
+	'envRRDPath': '/opt/autoGeiger/enviro.rrd' # Location of environmental RRD.
 }
 
 # Bosch BMP280 sensor.
