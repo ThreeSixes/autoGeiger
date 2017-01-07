@@ -14,7 +14,8 @@ class agGraph:
 		
 		# Graph parameters.
 		self.__graphs = {
-			'geiger1h': ["/opt/autoGeiger/public_html/geiger1h.png",
+			'geiger1h': [
+				"/opt/autoGeiger/public_html/geiger1h.png",
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-3600",
@@ -36,7 +37,8 @@ class agGraph:
 				"LINE1:alarm#FF0000:GC alarm"
 				#"LINE1:scaledAlarm#FF0000:GC alarm"
 			],
-			'geiger1d': ["/opt/autoGeiger/public_html/geiger1d.png",
+			'geiger1d': [
+				"/opt/autoGeiger/public_html/geiger1d.png",
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-86400",
