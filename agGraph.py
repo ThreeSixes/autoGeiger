@@ -59,7 +59,7 @@ class agGraph:
 				"LINE1:cps#00FF00:Counts/sec",
 				"LINE1:alarm#FF0000:GC alarm"
 				#"LINE1:scaledAlarm#FF0000:GC alarm"
-			],
+			]
 		}
 	
 	def createGraph(self, whichGraph):
