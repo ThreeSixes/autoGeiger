@@ -4,6 +4,7 @@ except:
 	print("Failed to open config.py. Please copy example/config.py to config.py and edit it.")
 
 import rrdtool
+import datetime
 
 class agGraph:
 	def __init__(self):
@@ -13,9 +14,17 @@ class agGraph:
 		
 		# Graph parameters.
 		self.__graphs = {
-			'geiger1h': ["/opt/autoGeiger/public_html/geiger1h.png", "-S", "1", "--end", "now", "--start", "end-3600", "-M", "-a", "PNG",
-			"-t", "Geiger counter readings (60 min)", "-v", "Counts/time",
-			"--width", "800",
+			'geiger1h': ["/opt/autoGeiger/public_html/geiger1h.png",
+			"-S", "1",
+			"--end", "now",
+			"--start", "end-3600",
+			"-M",
+			"-a", "PNG",
+			"-t", "Geiger counter readings (60 min)",
+			"--vertical-label", "Counts/time",
+			"--right-axis-label", "Alarm on",
+			"--right-axis", "100:0",
+			"--width", "800", "--watermark", "%s UTC" %datetime.datetime.utcnow(),
 			"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
