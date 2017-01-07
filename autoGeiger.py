@@ -72,6 +72,9 @@ class autoGeiger:
 		# Store the sample buffer!
 		self.__dl.serialize(self.__samples)
 		
+		# Graph the appropriate things.
+		self.__agg.createGraph('geiger1h')
+		
 		return
 	
 	def __handle1Sec(self):

@@ -13,7 +13,17 @@ class agGraph:
 		
 		# Graph parameters.
 		self.__graphs = {
-			
+			'geiger1h': ["/opt/autoGeiger/public_html/geiger1h.png", "-S", "1", "--end", "now", "--start", "end-3600", "-M", "-a", "PNG",
+			"-t \"Geiger counter readings (60 min)\"", "-v", "\"Counts/time\"",
+			"--width", "800",
+			"DEF:scpm=/opt/autoGeiger/geiger.rrd:slowCpm:LAST",
+			"DEF:fcpm=/opt/autoGeiger/geiger.rrd:fastCpm:LAST",
+			"DEF:cps=/opt/autoGeiger/geiger.rrd:cps:LAST",
+			"DEF:alarm=/opt/autoGeiger/geiger.rrd:alarm:LAST",
+			"LINE1:fcpm#FF00FF:\"Fast counts/min\"",
+			"LINE2:scpm#FFFF00:\"Slow counts/min\"",
+			"LINE3:cps#00FF00:\"Counts/sec\"",
+			"LINE4:alarm#FF0000:\"Alarm\""]
 		}
 	
 	def createGraph(self, whichGraph):
@@ -21,7 +31,11 @@ class agGraph:
 		Generate a given graph.
 		"""
 		
-		None
+		# Try the thing.
+		res = rrdtool.graph(self.__graphs[whichGraph])
+		
+		if res:
+			print rrdtool.error()
 	
 	def updateRRD(self, sample):
 		"""
