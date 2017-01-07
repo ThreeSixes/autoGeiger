@@ -29,7 +29,7 @@ class agGraph:
 		"""
 		
 		# Create a string to store in RRD for geiger counter data.
-		geigerSplStr = "N:%s:%s:%s:%s" %(sample['slowCpm'], sample['fastCpm'], sample['cps'], int['alarm'])
+		geigerSplStr = "N:%s:%s:%s:%s" %(sample['slowCpm'], sample['fastCpm'], sample['cps'], int(sample['alarm']))
 		geigerRet = rrdtool.update(config.graphSettings['geigerRRDPath'], geigerSplStr);
 		
 		# If it blew up puke an error.
