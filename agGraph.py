@@ -101,3 +101,11 @@ class agGraph:
 		# If it blew up puke an error.
 		if geigerRet:
 			print rrdtool.error()
+		
+		# Create a string to store in RRD for environmental data.
+		enviroSplStr = "N:%s:%s:%s:%s" %(sample['baroPres'], sample['baroTemp'], sample['humidRh'], int(sample['humidTemp']))
+		enviroRet = rrdtool.update(config.graphSettings['enviroRRDPath'], enviroSplStr);
+		
+		# If it blew up puke an error.
+		if enviroRet:
+			print rrdtool.error()
