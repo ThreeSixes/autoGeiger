@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 try:
 	import config
 except:
@@ -71,10 +73,6 @@ class autoGeiger:
 		
 		# Store the sample buffer!
 		self.__dl.serialize(self.__samples)
-		
-		# Graph the appropriate things.
-		self.__agg.createGraph('geiger1h')
-		self.__agg.createGraph('geiger1d')
 		
 		return
 	
@@ -247,15 +245,18 @@ class autoGeiger:
 			except:
 				None
 
-try:
-	# Start the service!
-	ag = autoGeiger()
-	ag.readCont()
-
-except (KeyboardInterrupt, SystemExit):
-	print("Quitting for real.")
-
-except:
-	print(traceback.format_exc())
-	raise
+# If we're being executed rather than included...
+if __name__ == "__main__":
+	# Set up command line interface.
+	try:
+		# Start the service!
+		ag = autoGeiger()
+		ag.readCont()
+	
+	except (KeyboardInterrupt, SystemExit):
+		print("Quitting for real.")
+	
+	except:
+		print(traceback.format_exc())
+		raise
 
