@@ -7,9 +7,13 @@
         <BR />
         Data graphs:
         <BR />
-        <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
+        <A HREF="geiger1h.png">
+            <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
+        </A>
         <BR />
-        <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
+        <A HREF="geiger1d.png">
+            <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
+        </A>
         <BR />
         <BR />
         Dafuhq is PUBROW?
