@@ -5,7 +5,6 @@
     <BODY>
         <H3>PUBROW background radiation experiment graphs.</H3>
         <BR />
-        <BR />
         <A HREF="/">Home</A>
         <BR />
         <A HREF="geiger1h.png">
