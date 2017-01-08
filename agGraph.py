@@ -14,25 +14,24 @@ class agGraph:
 		
 		# RRD create scripts.
 		self.__rrdCreate = {
-			'enviro': [
-				"/opt/autoGeiger/enviro.rrd",
-				"--start", "N",
-				"--step", "1",
-				"DS:baroPres:GAUGE:2:0:4294967296",
-				"DS:baroTemp:GAUGE:2:0:4294967296",
-				"DS:humidRh:GAUGE:2:0:4294967296",
-				"DS:humidTemp:GAUGE:2:0:1",
-				"RRA:LAST:0.5:1:2592000"
-			],
-			
 			'geiger': [
-				"/opt/autoGeiger/geiger.rrd",
+				config.graphSettings['geigerRRDPath'],
 				"--start", "N",
 				"--step", "1",
 				"DS:slowCpm:GAUGE:2:0:4294967296",
 				"DS:fastCpm:GAUGE:2:0:4294967296",
 				"DS:cps:GAUGE:2:0:4294967296",
 				"DS:alarm:GAUGE:2:0:1",
+				"RRA:LAST:0.5:1:2592000"
+			],
+			'enviro': [
+				config.graphSettings['enviroRRDPath'],
+				"--start", "N",
+				"--step", "1",
+				"DS:baroPres:GAUGE:2:0:4294967296",
+				"DS:baroTemp:GAUGE:2:0:4294967296",
+				"DS:humidRh:GAUGE:2:0:4294967296",
+				"DS:humidTemp:GAUGE:2:0:1",
 				"RRA:LAST:0.5:1:2592000"
 			]
 		}
@@ -66,10 +65,10 @@ class agGraph:
 			"--vertical-label", "Counts/time",
 			#"--right-axis-label", "Alarm on",
 			#"--right-axis", "100:0",
-			"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['geigerRRDPath'],
-			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['geigerRRDPath'],
-			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
-			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
+			"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['enviroRRDPath'],
+			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['enviroRRDPath'],
+			"DEF:cps=%s:cps:LAST" %config.graphSettings['enviroRRDPath'],
+			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['enviroRRDPath'],
 			#"CDEF:scaledAlarm=alarm,100,*",
 			"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
 			"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
