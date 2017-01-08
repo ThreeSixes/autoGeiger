@@ -7,7 +7,7 @@ function showRoot($addlMsg = "") {
 ?>
 <HTML>
     <HEAD>
-        <TITLE>PUBROW</TITLE>
+        <TITLE>PUBROW API</TITLE>
     </HEAD>
     <BODY>
 Quick-and-dirty documentation:

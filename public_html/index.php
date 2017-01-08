@@ -15,9 +15,7 @@
             <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
         </A>
         <BR />
-        <A HREF="graph.php">
-            Full list of graphs
-        </A>
+        <A HREF="graph.php">Full list of graphs</A>
         <BR />
         <BR />
         Dafuhq is PUBROW?
@@ -33,6 +31,9 @@
         <B>O</B>bserveration
         <BR />
         <B>W</B>orker
+        <BR />
+        <BR />
+        <A HREF="api/">PUBROW API</A>
         <BR />
         <BR />
         For more information see the <a href="https://www.youtube.com/playlist?list=PL2E0_v3_G6T9DGYTyCMgVBn4aFwTBw84D">YouTube playlist</a>.
