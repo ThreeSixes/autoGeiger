@@ -198,9 +198,29 @@ class agGraph:
 		if geigerRet:
 			print rrdtool.error()
 		
+		# If no barometric pressure comes through create an empty string.
+		bp = sample['baroPres']
+		if bp == None:
+			bp = ""
+		
+		# If no barometric temperature comes through create an empty string.
+		bt = sample['baroTemp']
+		if bt == None:
+			bt = ""
+		
+		# If no humidity comes through create an empty string.
+		hr = sample['humidRH']
+		if hr == None:
+			hr = ""
+		
+		# If no humidity temperature comes through create an empty string.
+		ht = sample['humidTemp']
+		if ht == None:
+			ht = ""
+		
 		# Create a string to store in RRD for environmental data.
-		enviroSplStr = "N:%s:%s:%s:%s" %(sample['baroPres'], sample['baroTemp'], sample['humidRH'], sample['humidTemp'])
-		#enviroRet = rrdtool.update(config.graphSettings['enviroRRDPath'], enviroSplStr);
+		enviroSplStr = "N:%s:%s:%s:%s" %(bp, bt, hr, ht)
+		enviroRet = rrdtool.update(config.graphSettings['enviroRRDPath'], enviroSplStr);
 		
 		# If it blew up puke an error.
 		#if enviroRet:
