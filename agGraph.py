@@ -60,21 +60,23 @@ class agGraph:
 			#"LINE1:scaledAlarm#FF0000:GC alarm"
 		]
 		
+		"""
+						"DS:baroPres:GAUGE:2:0:4294967296",
+				"DS:baroTemp:GAUGE:2:0:4294967296",
+				"DS:humidRh:GAUGE:2:0:4294967296",
+				"DS:humidTemp:GAUGE:2:0:1",
+		"""
+		
 		# Generic elements for environmental readings.
 		self.__enviroGen = [
-			"--vertical-label", "Counts/time",
-			#"--right-axis-label", "Alarm on",
-			#"--right-axis", "100:0",
-			"DEF:scpm=%s:slowCpm:LAST" %config.graphSettings['enviroRRDPath'],
-			"DEF:fcpm=%s:fastCpm:LAST" %config.graphSettings['enviroRRDPath'],
-			"DEF:cps=%s:cps:LAST" %config.graphSettings['enviroRRDPath'],
-			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['enviroRRDPath'],
-			#"CDEF:scaledAlarm=alarm,100,*",
-			"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
-			"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
-			"LINE1:cps#00FF00:Counts/sec",
-			"LINE1:alarm#FF0000:GC alarm"
-			#"LINE1:scaledAlarm#FF0000:GC alarm"
+			"DEF:bp=%s:baroPres:LAST" %config.graphSettings['enviroRRDPath'],
+			"DEF:bt=%s:baroTemp:LAST" %config.graphSettings['enviroRRDPath'],
+			"DEF:hr=%s:humidRh:LAST" %config.graphSettings['enviroRRDPath'],
+			"DEF:ht=%s:humidTemp:LAST" %config.graphSettings['enviroRRDPath'],
+			"LINE1:bp#FF00FF:Barometric pressure (Pa)",
+			"LINE1:bt#FFFF00:Barometer temperature (C)",
+			"LINE1:hr#00FF00:Humidity (rh)",
+			"LINE1:ht#FF0000:Hygrometer temperature(C)"
 		]
 		
 		# Graph parameters.
