@@ -8,7 +8,7 @@ except:
 
 import argparse
 import agGraph
-from traceback import traceback
+import traceback
 from pprint import pprint
 
 elStr = "--createRRD can be used with --geiger and --enviro. --graph can also be used with both, but if they are not specified it will generate graphs or RRD files for both. If --timing is not specified with --graph all graphs will be generated."
