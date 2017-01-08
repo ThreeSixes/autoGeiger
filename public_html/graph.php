@@ -1,6 +1,7 @@
 <HTML>
     <HEAD>
         <TITLE>PUBROW Graphs</TITLE>
+        <LINK REL="stylesheet" HREF="css/theme.css">
     </HEAD>
     <BODY>
         <H3>PUBROW background radiation experiment graphs.</H3>
