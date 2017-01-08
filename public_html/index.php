@@ -15,7 +15,6 @@
             <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
         </A>
         <BR />
-        <BR />
         <A HREF="graph.php">
             Full list of graphs
         </A>

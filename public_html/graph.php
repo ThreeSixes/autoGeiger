@@ -24,7 +24,6 @@
             <IMG SRC="geiger1m.png" ALT="1 month geiger counter statistics" />
         </A>
         <BR />
-        <BR />
         <A HREF="/">Home</A>
         <BR />
         <BR />
