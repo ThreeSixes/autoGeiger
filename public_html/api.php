@@ -11,7 +11,11 @@ function showRoot($addlMsg = "") {
         <LINK REL="stylesheet" HREF="../css/theme.css" />
     </HEAD>
     <BODY>
-Quick-and-dirty documentation:
+        <H3>Quick-and-dirty documentation:</H3>
+        <BR />
+        <A HREF="../">Home</A>
+        <BR />
+        <BR />
         <PRE>
 == API ==
 <?php print($_SERVER['HTTP_HOST']); ?>/api: You are here.
