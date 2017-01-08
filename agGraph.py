@@ -28,8 +28,8 @@ class agGraph:
 				config.graphSettings['enviroRRDPath'],
 				"--start", "N",
 				"--step", "1",
-				"DS:baroPres:GAUGE:2:0:4294967296",
-				"DS:baroTemp:GAUGE:2:0:4294967296",
+				"DS:baroPres:GAUGE:5:0:4294967296",
+				"DS:baroTemp:GAUGE:5:0:4294967296",
 				"DS:humidRh:GAUGE:2:0:4294967296",
 				"DS:humidTemp:GAUGE:2:0:1",
 				"RRA:LAST:0.5:1:2592000"
