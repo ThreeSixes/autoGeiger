@@ -40,7 +40,16 @@ class agGraph:
 		self.__grphImgGen = [
 			"-M",
 			"-a", "PNG",
-			"--width", "%s" %config.graphSettings['graphWidth']
+			"--width", "%s" %config.graphSettings['graphWidth'],
+			"-c", "BACK#000000",
+			"-c", "SHADEA#000000",
+			"-c", "SHADEB#000000",
+			"-c", "FONT#DDDDDD",
+			"-c", "CANVAS#202020",
+			"-c", "GRID#666666",
+			"-c", "MGRID#AAAAAA",
+			"-c", "FRAME#202020",
+			"-c", "ARROW#FFFFFF"
 		]
 		
 		# Generic elements for geiger counter readings.
