@@ -57,12 +57,6 @@ class agGraph:
 			"LINE1:scpm#FFFF00:Slow counts/min",
 			"LINE1:cps#00FF00:Counts/sec",
 			"LINE1:alarm#FF0000:GC alarm",
-			"VDEF:fc=fcpm,LATEST",
-			"VDEF:sc=scpm,LATEST",
-			"VDEF:cp=cpm,LATEST",
-			"GPRINT:fc:%6.2lf",
-			"GPRINT:sc:%6.2lf",
-			"GPRINT:cp:%lf"
 			#"LINE1:scaledAlarm#FF0000:GC alarm"
 		]
 		
