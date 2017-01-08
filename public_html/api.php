@@ -8,7 +8,7 @@ function showRoot($addlMsg = "") {
 <HTML>
     <HEAD>
         <TITLE>PUBROW API</TITLE>
-        <LINK REL="stylesheet" HREF="css/theme.css">
+        <LINK REL="stylesheet" HREF="css/theme.css" />
     </HEAD>
     <BODY>
 Quick-and-dirty documentation:
