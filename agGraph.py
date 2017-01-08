@@ -203,6 +203,8 @@ class agGraph:
 		bp = sample['baroPres']
 		if bp == None:
 			bp = ""
+		else:
+			bp = bp / 1000
 		
 		# If no barometric temperature comes through create an empty string.
 		bt = sample['baroTemp']
