@@ -22,7 +22,7 @@
         </A>
         <BR />
         <A HREF="enviro1d.png">
-            <IMG SRC="geiger1d.png" ALT="1 day environmental statistics" />
+            <IMG SRC="enviro1d.png" ALT="1 day environmental statistics" />
         </A>
         <BR />
         <A HREF="graph.php">Full list of graphs</A>
