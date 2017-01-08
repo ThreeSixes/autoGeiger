@@ -53,10 +53,13 @@ class agGraph:
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
 			#"CDEF:scaledAlarm=alarm,100,*",
-			"LINE1:fcpm#FF00FF:Fast counts/min (4 sec average)",
-			"LINE1:scpm#FFFF00:Slow counts/min (22 sec average)",
+			"LINE1:fcpm#FF00FF:Fast counts/min",
+			"LINE1:scpm#FFFF00:Slow counts/min",
 			"LINE1:cps#00FF00:Counts/sec",
-			"LINE1:alarm#FF0000:GC alarm"
+			"LINE1:alarm#FF0000:GC alarm",
+			"GPRINT:fcpm:%6.2lf",
+			"GPRINT:scpm:%6.2lf",
+			"GPRINT:cps:%6.0lf"
 			#"LINE1:scaledAlarm#FF0000:GC alarm"
 		]
 		
