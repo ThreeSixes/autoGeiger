@@ -9,7 +9,18 @@ graphSettings = {
 	'geigerRRDPath': '/opt/autoGeiger/geiger.rrd', # Location of geiger counter RRD.
 	'enviroRRDPath': '/opt/autoGeiger/enviro.rrd', # Location of environmental RRD.
 	'geigerGraphPath': '/opt/autoGeiger/public_html', # Geiger counter graph.
-	'enviroGraphPath': '/opt/autoGeiger/public_html' # Environmental graph.
+	'enviroGraphPath': '/opt/autoGeiger/public_html', # Environmental graph.
+	'formatting': [ # Color and formatting settings.
+		"-c", "BACK#000000",
+		"-c", "SHADEA#000000",
+		"-c", "SHADEB#000000",
+		"-c", "FONT#DDDDDD",
+		"-c", "CANVAS#202020",
+		"-c", "GRID#666666",
+		"-c", "MGRID#AAAAAA",
+		"-c", "FRAME#202020",
+		"-c", "ARROW#FFFFFF"
+	]
 }
 
 # Bosch BMP280 sensor.

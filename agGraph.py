@@ -164,7 +164,7 @@ class agGraph:
 		"""
 		
 		# Add generic graph properties.
-		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen + ["--watermark", "%s UTC" %datetime.datetime.utcnow()]
+		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen + ["--watermark", "%s UTC" %datetime.datetime.utcnow()] + config.graphSettings['formatting']
 		
 		# What graph type do we have?
 		if whichGraph.find("geiger") == 0:
