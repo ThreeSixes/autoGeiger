@@ -197,8 +197,8 @@ class agGraph:
 		
 		# Create a string to store in RRD for environmental data.
 		enviroSplStr = "N:%s:%s:%s:%s" %(sample['baroPres'], sample['baroTemp'], sample['humidRH'], int(sample['humidTemp']))
-		enviroRet = rrdtool.update(config.graphSettings['enviroRRDPath'], enviroSplStr);
+		#enviroRet = rrdtool.update(config.graphSettings['enviroRRDPath'], enviroSplStr);
 		
 		# If it blew up puke an error.
-		if enviroRet:
-			print rrdtool.error()
+		#if enviroRet:
+		#	print rrdtool.error()
