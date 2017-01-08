@@ -1,11 +1,12 @@
 <HTML>
     <HEAD>
-        <TITLE>PUBROW</TITLE>
+        <TITLE>PUBROW Graphs</TITLE>
     </HEAD>
     <BODY>
-        <H3>PUBROW background radiation experiment.</H3>
+        <H3>PUBROW background radiation experiment graphs.</H3>
         <BR />
-        Data graphs:
+        <BR />
+        <A HREF="/">Home</A>
         <BR />
         <A HREF="geiger1h.png">
             <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
@@ -15,25 +16,16 @@
             <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
         </A>
         <BR />
+        <A HREF="geiger1w.png">
+            <IMG SRC="geiger1w.png" ALT="1 week geiger counter statistics" />
+        </A>
         <BR />
-        <A HREF="graph.php">
-            Full list of graphs
+        <A HREF="geiger1m.png">
+            <IMG SRC="geiger1m.png" ALT="1 month geiger counter statistics" />
         </A>
         <BR />
         <BR />
-        Dafuhq is PUBROW?
-        <BR />
-        <B>P</B>ortland
-        <BR />
-        <B>U</B>rban
-        <BR />
-        <B>B</B>ackground
-        <BR />
-        <B>R</B>adiation
-        <BR />
-        <B>O</B>bserveration
-        <BR />
-        <B>W</B>orker
+        <A HREF="/">Home</A>
         <BR />
         <BR />
         For more information see the <a href="https://www.youtube.com/playlist?list=PL2E0_v3_G6T9DGYTyCMgVBn4aFwTBw84D">YouTube playlist</a>.
