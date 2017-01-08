@@ -76,8 +76,8 @@ class agGraph:
 			"DEF:bt=%s:baroTemp:LAST" %config.graphSettings['enviroRRDPath'],
 			"DEF:hr=%s:humidRh:LAST" %config.graphSettings['enviroRRDPath'],
 			"DEF:ht=%s:humidTemp:LAST" %config.graphSettings['enviroRRDPath'],
-			"VDEF:kPa=baroPres,100,/",
-			"LINE1:kPa#FF00FF:Barometric pressure",
+			#"VDEF:kPa=baroPres,100,/",
+			"LINE1:bp#FF00FF:Barometric pressure",
 			"LINE1:bt#FFFF00:Barometer temp.",
 			"LINE1:hr#00FF00:Humidity",
 			"LINE1:ht#FF0000:Hygrometer temp."
