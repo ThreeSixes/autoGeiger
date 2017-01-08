@@ -40,7 +40,7 @@ class agGraph:
 		self.__grphImgGen = [
 			"-M",
 			"-a", "PNG",
-			"--width", "800"
+			"--width", config.graphSettings['graphWidth']
 		]
 		
 		# Generic elements for geiger counter readings.
@@ -59,13 +59,6 @@ class agGraph:
 			"LINE1:alarm#FF0000:GC alarm"
 			#"LINE1:scaledAlarm#FF0000:GC alarm"
 		]
-		
-		"""
-						"DS:baroPres:GAUGE:2:0:4294967296",
-				"DS:baroTemp:GAUGE:2:0:4294967296",
-				"DS:humidRh:GAUGE:2:0:4294967296",
-				"DS:humidTemp:GAUGE:2:0:1",
-		"""
 		
 		# Generic elements for environmental readings.
 		self.__enviroGen = [

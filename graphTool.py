@@ -22,7 +22,7 @@ if __name__ == "__main__":
     parser.add_argument('--graph', action = 'store_true', help = 'Generate graphs from RRD files. Generates both graphs by default.')
     parser.add_argument('--geiger', action = 'store_true', help = 'Target geiger counter RRD.')
     parser.add_argument('--enviro', action = 'store_true', help = 'Target environmental data RRD.')
-    parser.add_argument('--timing', choices = ['1h', '1d', '1w', '30d'], help = 'Time frame graph to generate. Defaults to generating all time frames when used with --graph.')
+    parser.add_argument('--timing', choices = ['1h', '1d', '1w', '1m'], help = 'Time frame graph to generate. Defaults to generating all time frames when used with --graph.')
     args = parser.parse_args()
     
     try:
