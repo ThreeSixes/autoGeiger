@@ -12,8 +12,17 @@
             <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
         </A>
         <BR />
+        <A HREF="enviro1h.png">
+            <IMG SRC="enviro1h.png" ALT="1 hour environmental statistics" />
+        </A>
+        <BR />
+        <BR />
         <A HREF="geiger1d.png">
             <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
+        </A>
+        <BR />
+        <A HREF="enviro1d.png">
+            <IMG SRC="geiger1d.png" ALT="1 day environmental statistics" />
         </A>
         <BR />
         <A HREF="graph.php">Full list of graphs</A>
