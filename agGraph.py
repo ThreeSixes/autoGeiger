@@ -204,6 +204,7 @@ class agGraph:
 		if bp == None:
 			bp = ""
 		else:
+			# Convert to kPa
 			bp = bp / 1000
 		
 		# If no barometric temperature comes through create an empty string.
