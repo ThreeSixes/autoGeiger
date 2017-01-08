@@ -6,7 +6,7 @@ autoGeiger = {
 # Graphing engine settings.
 graphSettings = {
 	'geigerRRDPath': '/opt/autoGeiger/geiger.rrd', # Location of geiger counter RRD.
-	'envRRDPath': '/opt/autoGeiger/enviro.rrd', # Location of environmental RRD.
+	'enviroRRDPath': '/opt/autoGeiger/enviro.rrd', # Location of environmental RRD.
 	'geigerGraphPath': '/opt/autoGeiger/public_html', # Geiger counter graph.
 	'enviroGraphPath': '/opt/autoGeiger/public_html' # Environmental graph.
 }
