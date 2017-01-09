@@ -41,8 +41,7 @@ function showRoot($addlMsg = "") {
   'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
   'alarm': [True/False], # Ludlum 177 alarm output. Returns True when the Ludlum 177's alarm is going off.
   'baroPres': nnnnnn.n, # Barometric pressure in Pascals.
-  'cpsGood': [True/False/Null], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong. Null means the fast CPM buffer isn't full.
-  
+  'cpsGood': [True/False/Null], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong. Null means the slow CPM buffer isn't full.
   'cps': n, # Count of radiation detection events in the last second from the Ludlum 177.
   'baroTemp': nn.nn, # Barometer's temperature in degrees C.
   'fastCpm': n.n} # Counts per minute averaged from the last 4 seconds of data.

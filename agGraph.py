@@ -69,6 +69,15 @@ class agGraph:
 			#"LINE1:scaledAlarm#FF0000:GC alarm"
 		]
 		
+		# Generic elements for geiger counter CPS readings.
+		self.__geigerCpsGen = [
+			"--vertical-label", "Counts/sec",
+			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
+			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
+			"LINE1:cps#FF00FF:Counts/sec",
+			"LINE1:alarm#FF0000:GC alarm"
+		]
+		
 		# Generic elements for environmental readings.
 		self.__enviroGen = [
 			"--vertical-label", "kPa + %rH",
@@ -110,6 +119,37 @@ class agGraph:
 			],
 			'geiger1m': [
 				"%s/geiger1m.png" %config.graphSettings['geigerGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-2592000",
+				"-t", "Geiger counter readings (30 days)"
+			],
+			
+			'geigerCps1h': [
+				"%s/geigerCps1h.png" %config.graphSettings['geigerGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-3600",
+				"-t", "Geiger counter readings (60 min)"
+			],
+			'geigerCps1d': [
+				"%s/geigerCps1d.png" %config.graphSettings['geigerGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-86400",
+				"-M",
+				"-a", "PNG",
+				"-t", "Geiger counter readings (24 hour)"
+			],
+			'geigerCps1w': [
+				"%s/geigerCps1w.png" %config.graphSettings['geigerGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-604800",
+				"-t", "Geiger counter readings (1 week)"
+			],
+			'geigerCps1m': [
+				"%s/geigerCps1m.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-2592000",
@@ -227,5 +267,5 @@ class agGraph:
 		enviroRet = rrdtool.update(config.graphSettings['enviroRRDPath'], enviroSplStr);
 		
 		# If it blew up puke an error.
-		#if enviroRet:
-		#	print rrdtool.error()
+		if enviroRet:
+			print rrdtool.error()
