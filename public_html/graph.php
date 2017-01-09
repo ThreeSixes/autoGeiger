@@ -12,6 +12,10 @@
             <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
         </A>
         <BR />
+        <A HREF="cpsGeiger1h.png">
+            <IMG SRC="cpsGeiger1h.png" ALT="1 hour geiger counter statistics, CPS and alarm only." />
+        </A>
+        <BR />
         <A HREF="enviro1h.png">
             <IMG SRC="enviro1h.png" ALT="1 hour environmental statistics" />
         </A>
@@ -19,6 +23,10 @@
         <BR />
         <A HREF="geiger1d.png">
             <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
+        </A>
+        <BR />
+        <A HREF="cpsGeiger1d.png">
+            <IMG SRC="cpsGeiger1d.png" ALT="1 day geiger counter statistics, CPS and alarm only." />
         </A>
         <BR />
         <A HREF="enviro1d.png">
@@ -30,6 +38,10 @@
             <IMG SRC="geiger1w.png" ALT="1 week geiger counter statistics" />
         </A>
         <BR />
+        <A HREF="cpsGeiger1w.png">
+            <IMG SRC="cpsGeiger1w.png" ALT="1 hour week counter statistics, CPS and alarm only." />
+        </A>
+        <BR />
         <A HREF="enviro1w.png">
             <IMG SRC="enviro1w.png" ALT="1 week environmental statistics" />
         </A>
@@ -37,6 +49,10 @@
         <BR />
         <A HREF="geiger1m.png">
             <IMG SRC="geiger1m.png" ALT="1 month geiger counter statistics" />
+        </A>
+        <BR />
+        <A HREF="cpsGeiger1m.png">
+            <IMG SRC="cpsGeiger1m.png" ALT="1 month geiger counter statistics, CPS and alarm only." />
         </A>
         <BR />
         <A HREF="enviro1m.png">
