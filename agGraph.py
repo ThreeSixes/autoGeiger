@@ -70,7 +70,7 @@ class agGraph:
 		]
 		
 		# Generic elements for geiger counter CPS readings.
-		self.__geigerCpsGen = [
+		self.__cpsGeigerGen = [
 			"--vertical-label", "Counts/sec",
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
@@ -125,15 +125,15 @@ class agGraph:
 				"-t", "Geiger counter readings (30 days)"
 			],
 			
-			'geigerCps1h': [
-				"%s/geigerCps1h.png" %config.graphSettings['geigerGraphPath'],
+			'cpsGeiger1h': [
+				"%s/cpsGeiger1h.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-3600",
 				"-t", "Geiger counter readings (60 min)"
 			],
-			'geigerCps1d': [
-				"%s/geigerCps1d.png" %config.graphSettings['geigerGraphPath'],
+			'cpsGeiger1d': [
+				"%s/cpsGeiger1d.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-86400",
@@ -141,15 +141,15 @@ class agGraph:
 				"-a", "PNG",
 				"-t", "Geiger counter readings (24 hour)"
 			],
-			'geigerCps1w': [
-				"%s/geigerCps1w.png" %config.graphSettings['geigerGraphPath'],
+			'cpsGeiger1w': [
+				"%s/cpsGeiger1w.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-604800",
 				"-t", "Geiger counter readings (1 week)"
 			],
-			'geigerCps1m': [
-				"%s/geigerCps1m.png" %config.graphSettings['geigerGraphPath'],
+			'cpsGeiger1m': [
+				"%s/cpsGeiger1m.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
 				"--end", "now",
 				"--start", "end-2592000",
@@ -207,9 +207,9 @@ class agGraph:
 		# Add generic graph properties.
 		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen + ["--watermark", "%s UTC" %datetime.datetime.utcnow()] + config.graphSettings['formatting']
 		
-		if whichGraph.find("geigerCps"):
+		if whichGraph.find("cpsGeiger") == 0:
 			# Add geiger counter graph properties.
-			graphSpecCPS = graphSpec + self.__geigerCpsGen
+			graphSpecCPS = graphSpec + self.__cpsGeigerGen
 			# Try the thing.
 			resCps = rrdtool.graph(graphSpecCPS)
 			

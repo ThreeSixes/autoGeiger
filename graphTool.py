@@ -34,7 +34,7 @@ if __name__ == "__main__":
         
         # Do we want to do things with the geiger RRD?
         if args.geiger == True:
-            graphTargets.append("geigerCps")
+            graphTargets.append("cpsGeiger")
             graphTargets.append("geiger")
         
         # Do we want to do things with the enviro RRD?
@@ -43,14 +43,14 @@ if __name__ == "__main__":
         
         # If neither was specified assume they want both.
         if (args.geiger == False) and (args.enviro == False):
-            graphTargets = ["geiger", "geigerCps", "enviro"]
+            graphTargets = ["geiger", "cpsGeiger", "enviro"]
         
         # We want to create RRD files...
         if args.createRRD == True:
             # For each type of RRD we want to build...
             for rrdTgt in graphTargets:
                 # Ignore geigerCps since we already build it with the 'geiger' type.
-                if rrdTgt == "geigerCps":
+                if rrdTgt == "cpsGeiger":
                     None
                 else:
                     # Build it.
