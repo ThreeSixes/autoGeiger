@@ -74,7 +74,7 @@ class agGraph:
 			"--vertical-label", "Counts/sec",
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
-			"LINE1:cps#FF00FF:Counts/sec",
+			"LINE1:cps#00FF00:Counts/sec",
 			"LINE1:alarm#FF0000:GC alarm"
 		]
 		
@@ -207,22 +207,23 @@ class agGraph:
 		# Add generic graph properties.
 		graphSpec = self.__graphs[whichGraph] + self.__grphImgGen + ["--watermark", "%s UTC" %datetime.datetime.utcnow()] + config.graphSettings['formatting']
 		
-		# What graph type do we have?
-		if whichGraph.find("geiger") == 0:
-			# Add geiger counter graph properties.
-			graphSpecGeiger = graphSpec + self.__geigerGen
-			# Try the thing.
-			resGeiger = rrdtool.graph(graphSpecGeiger)
-			
-			if resGeiger:
-				print rrdtool.error()
-			
+		if whichGraph.find("geigerCps"):
 			# Add geiger counter graph properties.
 			graphSpecCPS = graphSpec + self.__geigerCpsGen
 			# Try the thing.
 			resCps = rrdtool.graph(graphSpecCPS)
 			
 			if resCps:
+				print rrdtool.error()
+		
+		# What graph type do we have?
+		elif whichGraph.find("geiger") == 0:
+			# Add geiger counter graph properties.
+			graphSpecGeiger = graphSpec + self.__geigerGen
+			# Try the thing.
+			resGeiger = rrdtool.graph(graphSpecGeiger)
+			
+			if resGeiger:
 				print rrdtool.error()
 		
 		# What graph type do we have?
