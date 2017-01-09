@@ -34,8 +34,8 @@ if __name__ == "__main__":
         
         # Do we want to do things with the geiger RRD?
         if args.geiger == True:
-            graphTargets.append("geiger")
             graphTargets.append("geigerCps")
+            graphTargets.append("geiger")
         
         # Do we want to do things with the enviro RRD?
         if args.enviro == True:
