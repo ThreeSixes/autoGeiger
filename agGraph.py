@@ -210,19 +210,19 @@ class agGraph:
 		# What graph type do we have?
 		if whichGraph.find("geiger") == 0:
 			# Add geiger counter graph properties.
-			graphSpec = graphSpec + self.__geigerGen
+			graphSpecGeiger = graphSpec + self.__geigerGen
 			# Try the thing.
-			res = rrdtool.graph(graphSpec)
+			resGeiger = rrdtool.graph(graphSpecGeiger)
 			
-			if res:
+			if resGeiger:
 				print rrdtool.error()
 			
 			# Add geiger counter graph properties.
-			graphSpec = graphSpec + self.__geigerCpsGen
+			graphSpecCPS = graphSpec + self.__geigerCpsGen
 			# Try the thing.
-			res = rrdtool.graph(graphSpec)
+			resCps = rrdtool.graph(graphSpecCPS)
 			
-			if res:
+			if resCps:
 				print rrdtool.error()
 		
 		# What graph type do we have?
