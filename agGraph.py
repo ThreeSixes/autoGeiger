@@ -211,6 +211,19 @@ class agGraph:
 		if whichGraph.find("geiger") == 0:
 			# Add geiger counter graph properties.
 			graphSpec = graphSpec + self.__geigerGen
+			# Try the thing.
+			res = rrdtool.graph(graphSpec)
+			
+			if res:
+				print rrdtool.error()
+			
+			# Add geiger counter graph properties.
+			graphSpec = graphSpec + self.__geigerCpsGen
+			# Try the thing.
+			res = rrdtool.graph(graphSpec)
+			
+			if res:
+				print rrdtool.error()
 		
 		# What graph type do we have?
 		elif whichGraph.find("enviro") == 0:
@@ -219,12 +232,6 @@ class agGraph:
 		
 		else:
 			return
-		
-		# Try the thing.
-		res = rrdtool.graph(graphSpec)
-		
-		if res:
-			print rrdtool.error()
 	
 	def updateRRD(self, sample):
 		"""
