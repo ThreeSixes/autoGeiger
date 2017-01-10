@@ -156,7 +156,7 @@ class autoGeiger:
 					'baroPres': None,
 					'cpsGood': None,
 					'baroGap': None,
-					'flag': False
+					'statFlag': False
 				}
 				
 				try:
