@@ -32,7 +32,7 @@ class agGraph:
 				"DS:baroTemp:GAUGE:2:-40:85",
 				"DS:humidRh:GAUGE:2:0:100",
 				"DS:humidTemp:GAUGE:2:-40:125",
-				"RRA:LAST:0.5:-40:125"
+				"RRA:LAST:0.5:1:2592000"
 			]
 		}
 		
