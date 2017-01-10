@@ -74,8 +74,8 @@ class agGraph:
 			"--vertical-label", "Counts/sec",
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
-			"GPRINT:cps:LAST:%6lf%s cps",
 			"LINE1:cps#00FFFF:Counts/sec",
+			"GPRINT:cps:LAST:%s cps",
 			"LINE1:alarm#FF0000:GC alarm"
 		]
 		
