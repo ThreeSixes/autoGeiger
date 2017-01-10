@@ -38,7 +38,7 @@ function showRoot($addlMsg = "") {
   'humidRH': nn.nn, # Humdity in %rH
   'dts': 'YYYY-MM-DD HH:MM:SS.ffffff', # UTC timestamp
   'fastFull': [True/False], # Fast average of counts per second (averaged over 4 sec)
-  'baroGap': [True/False/Null], # Is the a gap the barometer data that was filled with the last reading?
+  'baroGap': [True/False/Null], # Is there a gap the barometer data that was filled with the last good reading?
   'slowFull': [True/False], # Fast average of counts per second (averaged over 22 sec)
   'humidTemp': nn.nn, # Humidity sensor's temperature in degrees C.
   'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
