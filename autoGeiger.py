@@ -81,15 +81,13 @@ class autoGeiger:
 		Handle the last second of samples.
 		"""
 		
-		# Drop the sample on the queue in JSON format.
-		thisSpl = self.__samples[0]
-		
 		# Tack the latest sample on and trim the buffer.
-		self.__sampleBuf[:0] = [thisSpl]
+		self.__sampleBuf[:0] = [self.__samples[0]]
 		self.__sampleBuf =  self.__sampleBuf[:config.autoGeiger['splBuffDepth']]
 		
 		# So we don't choke when attempting to create JSON objects to cache,
 		# without destroying the timestamp being written to the DB.
+		thisSpl = self.__sampleBuf[0]
 		thisSpl['dts'] = str(thisSpl['dts'])
 		
 		# Queue up the latest sample.
