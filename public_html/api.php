@@ -29,13 +29,16 @@ function showRoot($addlMsg = "") {
  
  == Record format ==
  Records from experiment are in JSON format as follows:
- {'humidRH': 29.57, 'dts': '2017-01-05 04:46:03.211875', 'fastFull': True, 'slowFull': True, 'humidTemp': 16.99, 'slowCpm': 0.0,
-  'alarm': False, 'baroPres': 101836.0, 'cpsGood': False, 'cps': 0, 'baroTemp': 17.39, 'fastCpm': 0.0}
+
+ {'statFlag': False, 'humidRH': 42.55, 'dts': '2017-01-10 08:18:28.801531', 'fastFull': True, 'baroGap': False, 'slowFull': False, 'humidTemp': 17.57,
+  'slowCpm': 19.09, 'alarm': False, 'baroPres': 99690.0, 'cpsGood': None, 'cps': 0, 'baroTemp': 18.06, 'fastCpm': 60.0}
  
  Fields are as follows:
- {'humidRH': nn.nn, # Humdity in %rH
+ {'statFlag': False, # Did we get a statistical flag?
+  'humidRH': nn.nn, # Humdity in %rH
   'dts': 'YYYY-MM-DD HH:MM:SS.ffffff', # UTC timestamp
   'fastFull': [True/False], # Fast average of counts per second (averaged over 4 sec)
+  'baroGap': False, # Is the a gap the barometer data that was filled with the last reading?
   'slowFull': [True/False], # Fast average of counts per second (averaged over 22 sec)
   'humidTemp': nn.nn, # Humidity sensor's temperature in degrees C.
   'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
