@@ -201,7 +201,6 @@ class autoGeiger:
 				
 				except:
 					print(traceback.format_exc())
-					None
 				
 				# Get barometric data.
 				try:
@@ -214,7 +213,6 @@ class autoGeiger:
 				
 				except:
 					print(traceback.format_exc())
-					None
 				
 				# Prepend sample data. This could be appending.
 				self.__samples[:0] = [thisSample]
