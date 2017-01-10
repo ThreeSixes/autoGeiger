@@ -80,7 +80,7 @@ class agGraph:
 		
 		# Generic elements for environmental readings.
 		self.__enviroGen = [
-			"--vertical-label", "kPa + %rH + deg C",
+			"--vertical-label", "kPa + %rH + C",
 			"DEF:bp=%s:baroPres:LAST" %config.graphSettings['enviroRRDPath'],
 			"DEF:bt=%s:baroTemp:LAST" %config.graphSettings['enviroRRDPath'],
 			"DEF:hr=%s:humidRh:LAST" %config.graphSettings['enviroRRDPath'],
