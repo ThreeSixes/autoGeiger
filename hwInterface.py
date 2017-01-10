@@ -48,6 +48,9 @@ class hwInterface:
 			# Set sensor mode.
 			self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
 			
+			# Barometer data gap?
+			self.__baroGap = None
+			
 			# Store last good barometric pressure and temperature readings.
 			self.__lastGoodBaro = {'baroPres': None, 'baroTemp': None}
 		
@@ -186,6 +189,7 @@ class hwInterface:
 		except:
 			self.shutdown()
 			raise
+	
 	def __baroFilter(self):
 		"""
 		Filter barometer readings for good readings. This is useful because we often query the barometer when it's loading data into registers. This wasy we eliminate data gaps.
@@ -193,6 +197,14 @@ class hwInterface:
 		
 		# Set temperature and humdity to null.
 		retVal = {'baroPres': None, 'baroTemp': None}
+		
+		# If we have any bad value.
+		if (self.__bmp280.temperature == None) or (self.__bmp280.pressure == None):
+			#  Flag our data as having a gap.
+			self.__baroGap = True
+		else:
+			# Flag our data s not having a gap.
+			self.__baroGap = False
 		
 		# Do we have a good pressure reading from the barometer?
 		if self.__bmp280.pressure == None:
@@ -342,6 +354,13 @@ class hwInterface:
 		
 		return retVal
 	
+	def getBaroStat(self):
+		"""
+		Do we have a good reading from the barometer?
+		"""
+		
+		return self.__baroGap
+
 	def getBaroReadings(self):
 		"""
 		Get all readings from the barometer.

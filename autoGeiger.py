@@ -154,7 +154,9 @@ class autoGeiger:
 					'humidTemp': None,
 					'baroTemp': None,
 					'baroPres': None,
-					'cpsGood': None
+					'cpsGood': None,
+					'baroGap': None,
+					'flag': False
 				}
 				
 				try:
@@ -201,6 +203,9 @@ class autoGeiger:
 				# Get barometric data.
 				try:
 					if config.bmp280Settings['enabled']:
+						# Flag our barometric readings with a gap.
+						thisSample['baroGap'] = self.__hwI.getBaroStat()
+						
 						# Temp and baro readings.
 						thisSample.update(self.__hwI.getBaroReadings())
 				
