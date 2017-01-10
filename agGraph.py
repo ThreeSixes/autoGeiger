@@ -75,7 +75,6 @@ class agGraph:
 			"DEF:cps=%s:cps:LAST" %config.graphSettings['geigerRRDPath'],
 			"DEF:alarm=%s:alarm:LAST" %config.graphSettings['geigerRRDPath'],
 			"AREA:cps#00FFFF:Counts/sec",
-			"GPRINT:cps:LAST: Current\:%8.2lf %s",
 			"LINE1:alarm#FF0000:GC alarm"
 		]
 		
