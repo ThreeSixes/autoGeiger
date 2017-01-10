@@ -47,6 +47,9 @@ class hwInterface:
 			
 			# Set sensor mode.
 			self.__bmp280.setMode(config = bmp280Config, meas = bmp280Meas)
+			
+			# Store last good barometric pressure and temperature readings.
+			self.__lastGoodBaro = {'baroPres': None, 'baroTemp': None}
 		
 		# If we want to use the SHT31D sensor...
 		if config.sht31dSettings['enabled']:
@@ -183,7 +186,36 @@ class hwInterface:
 		except:
 			self.shutdown()
 			raise
-	
+	def __baroFilter(self):
+		"""
+		Filter barometer readings for good readings. This is useful because we often query the barometer when it's loading data into registers. This wasy we eliminate data gaps.
+		"""
+		
+		# Set temperature and humdity to null.
+		retVal = {'baroPres': None, 'baroTemp': None}
+		
+		# Do we have a good pressure reading from the barometer?
+		if self.__bmp280.pressure == None:
+			# Try to use the last good value we have if we have one.
+			retVal['baroPres'] = self.__baroFilter['baroPres']
+		
+		else:
+			# Set the last good reading and use the actual pressure.
+			retVal['baroPres'] = self.__bmp280.pressure
+			self.__baroFilter['baroPres'] = retVal['baroPres']
+		
+		# Do we have a good temperature reading from the barometer?
+		if self.__bmp280.temperature == None:
+			# Try to use the last good value we have if we have one.
+			retVal['baroTemp'] = self.__baroFilter['baroTemp']
+		
+		else:
+			# Set the last good reading and use the actual temperature.
+			retVal['baroTemp'] = self.__bmp280.temperature
+			self.__baroFilter['baroTemp'] = retVal['baroTemp']
+		
+		return retVal
+
 	def __sensorThread(self):
 		"""
 		This continually reads data from the sensors.
@@ -199,6 +231,7 @@ class hwInterface:
 				
 				# If we're using the SHT31-D...
 				if config.sht31dSettings['enabled']:
+					# Read from it.
 					self.__sht31d.readSensor()
 				
 				# Park the thread for a second.
@@ -314,7 +347,8 @@ class hwInterface:
 		Get all readings from the barometer.
 		"""
 		
-		return {'baroPres': self.__bmp280.pressure, 'baroTemp': self.__bmp280.temperature}
+		# Get filtered readings.
+		return self.__baroFilter()
 	
 	def getHumidReadings(self):
 		"""
