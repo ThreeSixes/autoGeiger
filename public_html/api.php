@@ -34,11 +34,11 @@ function showRoot($addlMsg = "") {
   'slowCpm': 19.09, 'alarm': False, 'baroPres': 99690.0, 'cpsGood': None, 'cps': 0, 'baroTemp': 18.06, 'fastCpm': 60.0}
  
  Fields are as follows:
- {'statFlag': False, # Did we get a statistical flag?
+ {'statFlag': [True/False], # Did we get a statistical flag?
   'humidRH': nn.nn, # Humdity in %rH
   'dts': 'YYYY-MM-DD HH:MM:SS.ffffff', # UTC timestamp
   'fastFull': [True/False], # Fast average of counts per second (averaged over 4 sec)
-  'baroGap': False, # Is the a gap the barometer data that was filled with the last reading?
+  'baroGap': [True/False/Null], # Is the a gap the barometer data that was filled with the last reading?
   'slowFull': [True/False], # Fast average of counts per second (averaged over 22 sec)
   'humidTemp': nn.nn, # Humidity sensor's temperature in degrees C.
   'slowCpm': n.n, # Counts per minute averaged from the last 22 seconds of data.
