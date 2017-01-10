@@ -197,22 +197,22 @@ class hwInterface:
 		# Do we have a good pressure reading from the barometer?
 		if self.__bmp280.pressure == None:
 			# Try to use the last good value we have if we have one.
-			retVal['baroPres'] = self.__baroFilter['baroPres']
+			retVal['baroPres'] = self.__lastGoodBaro['baroPres']
 		
 		else:
 			# Set the last good reading and use the actual pressure.
 			retVal['baroPres'] = self.__bmp280.pressure
-			self.__baroFilter['baroPres'] = retVal['baroPres']
+			self.__lastGoodBaro['baroPres'] = retVal['baroPres']
 		
 		# Do we have a good temperature reading from the barometer?
 		if self.__bmp280.temperature == None:
 			# Try to use the last good value we have if we have one.
-			retVal['baroTemp'] = self.__baroFilter['baroTemp']
+			retVal['baroTemp'] = self.__lastGoodBaro['baroTemp']
 		
 		else:
 			# Set the last good reading and use the actual temperature.
 			retVal['baroTemp'] = self.__bmp280.temperature
-			self.__baroFilter['baroTemp'] = retVal['baroTemp']
+			self.__lastGoodBaro['baroTemp'] = retVal['baroTemp']
 		
 		return retVal
 
