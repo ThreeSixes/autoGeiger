@@ -1,7 +1,7 @@
 # AutoGeiger tunable parameters
 autoGeiger = {
 	'splBuffDepth': 60, # How many samples do we want in our temprary buffer?
-	'fastSamples': 2, # How many samples do we want to average for fast CPM?
+	'fastSamples': 4, # How many samples do we want to average for fast CPM?
 	'slowSamples': 22 # How many samples do we want to anverage for slow CPM?
 }
 

@@ -37,7 +37,7 @@ function showRoot($addlMsg = "") {
  {'statFlag': [True/False], # Did we get a statistical flag?
   'humidRH': nn.nn, # Humdity in %rH
   'dts': 'YYYY-MM-DD HH:MM:SS.ffffff', # UTC timestamp
-  'fastFull': [True/False], # Fast average of counts per second (averaged over 2 sec)
+  'fastFull': [True/False], # Fast average of counts per second (averaged over 4 sec)
   'baroGap': [True/False/Null], # Is there a gap in the barometer data that was filled with the last good reading?
   'slowFull': [True/False], # Fast average of counts per second (averaged over 22 sec)
   'humidTemp': nn.nn, # Humidity sensor's temperature in degrees C.
@@ -47,7 +47,7 @@ function showRoot($addlMsg = "") {
   'cpsGood': [True/False/Null], # Did we get at least 1 count in the last 22 seconds? If not something is probably wrong. Null means the slow CPM buffer isn't full.
   'cps': n, # Count of radiation detection events in the last second from the Ludlum 177.
   'baroTemp': nn.nn, # Barometer's temperature in degrees C.
-  'fastCpm': n.n} # Counts per minute averaged from the last 2 seconds of data.
+  'fastCpm': n.n} # Counts per minute averaged from the last 4 seconds of data.
         </PRE>
     <BR />
     <?php print($addlMsg); ?>
