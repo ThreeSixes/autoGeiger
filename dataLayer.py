@@ -8,7 +8,6 @@ from pprint import pprint
 
 if config.mongoSettings['enabled']: import pymongo
 if config.redisSettings['enabled']: import redis
-import json
 
 class dataLayer:
 	def __init__(self):
