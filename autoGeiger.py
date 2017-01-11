@@ -155,7 +155,7 @@ class autoGeiger:
 					'baroGap': None,
 					'statFlag': False
 				}
-				
+				pprint(thisSample)
 				try:
 					# Get our geiger counter data.
 					thisSample['cps'] = self.__hwI.getCPS()
