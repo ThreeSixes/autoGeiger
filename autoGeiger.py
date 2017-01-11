@@ -140,6 +140,7 @@ class autoGeiger:
 				
 				# Build a template for this sample.
 				thisSample = {
+					'dts': datetime.datetime.utcnow(),
 					'cps': None,
 					'fastCpm': None,
 					'slowCpm': None,
@@ -159,7 +160,6 @@ class autoGeiger:
 					# Get our geiger counter data.
 					thisSample['cps'] = self.__hwI.getCPS()
 					thisSample['alarm'] = self.__hwI.getAlarmState()
-					thisSample['dts'] = self.__hwI.getReadingTs()
 				
 				except:
 					print(traceback.format_exc())
