@@ -43,6 +43,9 @@ class dataLayer:
 		try:
 			# If we want to use Redis...	
 			if config.redisSettings['enabled']:
+				# Fix dts field.
+				record['dts'] = str(record['dts'])
+				
 				self.__r.setex(
 					config.redisSettings['cacheName'],
 					config.redisSettings['cacheExpire'],
@@ -61,6 +64,9 @@ class dataLayer:
 		
 		# If we want to use Redis...	
 		if config.redisSettings['enabled']:
+			# Fix dts field.
+			record['dts'] = str(record['dts'])
+			
 			# Queue the record up.
 			self.__r.publish(config.redisSettings['qName'], record)
 	

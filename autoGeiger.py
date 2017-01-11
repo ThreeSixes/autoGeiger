@@ -85,19 +85,14 @@ class autoGeiger:
 		self.__sampleBuf[:0] = [self.__samples[0]]
 		self.__sampleBuf =  self.__sampleBuf[:config.autoGeiger['splBuffDepth']]
 		
-		# So we don't choke when attempting to create JSON objects to cache,
-		# without destroying the timestamp being written to the DB.
-		thisSpl = self.__sampleBuf[0]
-		thisSpl['dts'] = str(thisSpl['dts'])
-		
 		# Queue up the latest sample.
-		self.__dl.queueUp(thisSpl)
+		self.__dl.queueUp(self.__sampleBuf[0])
 		
 		# Cache the sample buffer.
-		self.__dl.cacheUp(thisSpl)
+		self.__dl.cacheUp(self.__sampleBuf[0])
 		
 		# Update RRDtool database.
-		self.__agg.updateRRD(thisSpl)
+		self.__agg.updateRRD(self.__sampleBuf[0])
 		
 		# Dump count data, alarm status, and start/end timestamps.
 		"""print("CPS		   : %s" %self.__samples[0]['cps'])
