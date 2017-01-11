@@ -156,8 +156,6 @@ class autoGeiger:
 					'statFlag': False
 				}
 				
-				print(type(thisSample['dts']))
-				
 				try:
 					# Get our geiger counter data.
 					thisSample['cps'] = self.__hwI.getCPS()
