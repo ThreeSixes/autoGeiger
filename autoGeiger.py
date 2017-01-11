@@ -208,7 +208,7 @@ class autoGeiger:
 				# Prepend sample data. This could be appending.
 				self.__samples[:0] = [thisSample]
 				
-				# Handle this last second worth of samples.
+				# 1 second trigger.
 				self.__handle1Sec()
 				
 				# Increment data second count.
@@ -216,7 +216,7 @@ class autoGeiger:
 				
 				# If we have 1 minute of data...
 				if secCt == 60:
-					# Store our data samples stored in the buffer.
+					# 1 minute trigger.
 					self.__handle1Min()
 					
 					# Reset counter.

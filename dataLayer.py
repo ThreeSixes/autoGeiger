@@ -78,6 +78,9 @@ class dataLayer:
 		Serialize records.
 		"""
 		
+		# Reverse the array because records were prepended.
+		records.reverse()
+		
 		try:
 			# IF we want to use mongoDB...
 			if config.redisSettings['enabled']:
