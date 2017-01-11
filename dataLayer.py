@@ -39,6 +39,11 @@ class dataLayer:
 		Cache a record.
 		"""
 		
+		# Create a new record since the dictionary is otherwise passed as a reference.
+		newRecord = {}
+		newRecord.update(record)
+		newRecord['dts'] = str(newRecord['dts'])
+		
 		try:
 			# If we want to use Redis...	
 			if config.redisSettings['enabled']:
@@ -57,6 +62,11 @@ class dataLayer:
 		"""
 		Drop incoming data into queues.
 		"""
+		
+		# Create a new record since the dictionary is otherwise passed as a reference.
+		newRecord = {}
+		newRecord.update(record)
+		newRecord['dts'] = str(newRecord['dts'])
 		
 		# If we want to use Redis...	
 		if config.redisSettings['enabled']:
