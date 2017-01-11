@@ -50,7 +50,7 @@ class dataLayer:
 				self.__r.setex(
 					config.redisSettings['cacheName'],
 					config.redisSettings['cacheExpire'],
-					record
+					newRecord
 				)
 	
 		except:
@@ -71,7 +71,7 @@ class dataLayer:
 		# If we want to use Redis...	
 		if config.redisSettings['enabled']:
 			# Queue the record up.
-			self.__r.publish(config.redisSettings['qName'], record)
+			self.__r.publish(config.redisSettings['qName'], newRecord)
 	
 	def serialize(self, records):
 		"""
