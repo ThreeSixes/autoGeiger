@@ -43,7 +43,7 @@ class dataLayer:
 			# If we want to use Redis...	
 			if config.redisSettings['enabled']:
 				# Fix dts field.
-				record['dts'] = str(record['dts'])
+				#record['dts'] = str(record['dts'])
 				
 				self.__r.setex(
 					config.redisSettings['cacheName'],
