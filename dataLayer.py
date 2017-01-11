@@ -73,7 +73,7 @@ class dataLayer:
 		"""
 		Serialize records.
 		"""
-		
+		pprint(records)
 		try:
 			# IF we want to use mongoDB...
 			if config.redisSettings['enabled']:
