@@ -63,8 +63,6 @@ class autoGeiger:
 		
 		# Fast and slow sample averaging stuff.
 		self.__avgBuff = []
-		self.__fastCt = 4
-		self.__slowCt = 22
 	
 	def __handle1Min(self):
 		"""
@@ -167,15 +165,15 @@ class autoGeiger:
 				
 				# Prepend the incoming sample, and trim the array to the largest amount we need.
 				self.__avgBuff[:0] = [thisSample['cps']]
-				self.__avgBuff = self.__avgBuff[:self.__slowCt]
+				self.__avgBuff = self.__avgBuff[:config.autoGeiger['slowSamples']]
 				
 				# Compute fast and slow averages.
-				thisSample['fastCpm'] = round((float(sum(self.__avgBuff[:self.__fastCt])) / float(self.__fastCt) * 60.0), 2)
-				thisSample['slowCpm'] = round((float(sum(self.__avgBuff)) / float(self.__slowCt) * 60.0), 2)
+				thisSample['fastCpm'] = round((float(sum(self.__avgBuff[:config.autoGeiger['fastSamples']])) / float(config.autoGeiger['fastSamples']) * 60.0), 2)
+				thisSample['slowCpm'] = round((float(sum(self.__avgBuff)) / float(config.autoGeiger['slowSamples']) * 60.0), 2)
 				
 				# See if we have full buffers for fast and slow averages.
-				thisSample['fastFull'] = True if len(self.__avgBuff) >= self.__fastCt else False
-				thisSample['slowFull'] = True if len(self.__avgBuff) >= self.__slowCt else False
+				thisSample['fastFull'] = True if len(self.__avgBuff) >= config.autoGeiger['fastSamples'] else False
+				thisSample['slowFull'] = True if len(self.__avgBuff) >= config.autoGeiger['slowSamples'] else False
 				
 				# Try to see if we have no counts...
 				if thisSample['slowFull'] == True:
