@@ -18,12 +18,8 @@
         <A HREF="cpsGeiger10m.png">
             <IMG SRC="cpsGeiger10m.png" ALT="10 minute geiger counter statistics, CPS and alarm only." />
         </A>
-        <!-- These readings don't change a lot over 10 minutes generally so we're not adding those graphs to the page.
         <BR />
-        <A HREF="enviro10m.png">
-            <IMG SRC="enviro10m.png" ALT="10 minute environmental statistics" />
-        </A>
-        -->
+        10 minute environmental data isn't displayed but can be found <A HREF="enviro10m.png">here</A>.
         <BR />
         <BR />
         1 hour graphs.
@@ -36,9 +32,7 @@
             <IMG SRC="cpsGeiger1h.png" ALT="1 hour geiger counter statistics, CPS and alarm only." />
         </A>
         <BR />
-        <A HREF="enviro1h.png">
-            <IMG SRC="enviro1h.png" ALT="1 hour environmental statistics" />
-        </A>
+        1 hour environmental data isn't displayed but can be found <A HREF="enviro1h.png">here</A>.
         <BR />
         <BR />
         1 day graphs.
