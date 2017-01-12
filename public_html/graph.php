@@ -8,6 +8,9 @@
         <BR />
         <A HREF="/">Home</A>
         <BR />
+        <BR />
+        10 minute graphs.
+        <BR />
         <A HREF="geiger10m.png">
             <IMG SRC="geiger10m.png" ALT="10 minute geiger counter statistics" />
         </A>
@@ -15,11 +18,15 @@
         <A HREF="cpsGeiger10m.png">
             <IMG SRC="cpsGeiger10m.png" ALT="10 minute geiger counter statistics, CPS and alarm only." />
         </A>
+        <!-- These readings don't change a lot over 10 minutes generally so we're not adding those graphs to the page.
         <BR />
         <A HREF="enviro10m.png">
             <IMG SRC="enviro10m.png" ALT="10 minute environmental statistics" />
         </A>
+        -->
         <BR />
+        <BR />
+        1 hour graphs.
         <BR />
         <A HREF="geiger1h.png">
             <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
@@ -34,6 +41,8 @@
         </A>
         <BR />
         <BR />
+        1 day graphs.
+        <BR />
         <A HREF="geiger1d.png">
             <IMG SRC="geiger1d.png" ALT="1 day geiger counter statistics" />
         </A>
@@ -47,6 +56,8 @@
         </A>
         <BR />
         <BR />
+        1 week graphs.
+        <BR />
         <A HREF="geiger1w.png">
             <IMG SRC="geiger1w.png" ALT="1 week geiger counter statistics" />
         </A>
@@ -59,6 +70,8 @@
             <IMG SRC="enviro1w.png" ALT="1 week environmental statistics" />
         </A>
         <BR />
+        <BR />
+        1 month (30 day) graphs.
         <BR />
         <A HREF="geiger1m.png">
             <IMG SRC="geiger1m.png" ALT="1 month geiger counter statistics" />
