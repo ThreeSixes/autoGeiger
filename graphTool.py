@@ -59,9 +59,11 @@ if __name__ == "__main__":
         # We want to graph then...
         elif args.graph == True:
             # Set a dummy value that will trigger generation of all timeframes.
-            timingSuffix = ["1h", "1d", "1w", "1m"]
+            timingSuffix = ["10m", "1h", "1d", "1w", "1m"]
             
             # If we specify a timing suffix set it.
+            if args.timing == "10m":
+                timingSuffix = ["10m"]
             if args.timing == "1h":
                 timingSuffix = ["1h"]        
             if args.timing == "1d":

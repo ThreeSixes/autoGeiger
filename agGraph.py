@@ -93,6 +93,13 @@ class agGraph:
 		
 		# Graph parameters.
 		self.__graphs = {
+			'geiger10m': [
+				"%s/geiger10m.png" %config.graphSettings['geigerGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-600",
+				"-t", "Geiger counter readings (10 min)"
+			],
 			'geiger1h': [
 				"%s/geiger1h.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
@@ -124,6 +131,13 @@ class agGraph:
 				"-t", "Geiger counter readings (30 days)"
 			],
 			
+			'cpsGeiger10m': [
+				"%s/cpsGeiger10m.png" %config.graphSettings['geigerGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-600",
+				"-t", "Geiger counter readings (10 min)"
+			],
 			'cpsGeiger1h': [
 				"%s/cpsGeiger1h.png" %config.graphSettings['geigerGraphPath'],
 				"-S", "1",
@@ -155,6 +169,13 @@ class agGraph:
 				"-t", "Geiger counter readings (30 days)"
 			],
 			
+			'enviro10m': [
+				"%s/enviro10m.png" %config.graphSettings['enviroGraphPath'],
+				"-S", "1",
+				"--end", "now",
+				"--start", "end-600",
+				"-t", "Environmental readings (10 min)"
+			],
 			'enviro1h': [
 				"%s/enviro1h.png" %config.graphSettings['enviroGraphPath'],
 				"-S", "1",
