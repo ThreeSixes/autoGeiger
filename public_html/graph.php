@@ -8,6 +8,19 @@
         <BR />
         <A HREF="/">Home</A>
         <BR />
+        <A HREF="geiger10m.png">
+            <IMG SRC="geiger10m.png" ALT="10 minute geiger counter statistics" />
+        </A>
+        <BR />
+        <A HREF="cpsGeiger10m.png">
+            <IMG SRC="cpsGeiger10m.png" ALT="10 minute geiger counter statistics, CPS and alarm only." />
+        </A>
+        <BR />
+        <A HREF="enviro10m.png">
+            <IMG SRC="enviro10m.png" ALT="10 minute environmental statistics" />
+        </A>
+        <BR />
+        <BR />
         <A HREF="geiger1h.png">
             <IMG SRC="geiger1h.png" ALT="1 hour geiger counter statistics" />
         </A>
