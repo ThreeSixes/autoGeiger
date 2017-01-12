@@ -32,7 +32,9 @@
             <IMG SRC="cpsGeiger1h.png" ALT="1 hour geiger counter statistics, CPS and alarm only." />
         </A>
         <BR />
-        1 hour environmental data isn't displayed but can be found <A HREF="enviro1h.png">here</A>.
+        <A HREF="enviro1h.png">
+            <IMG SRC="enviro1h.png" ALT="1 hour environmental statistics." />
+        </A>
         <BR />
         <BR />
         1 day graphs.
